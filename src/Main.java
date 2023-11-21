@@ -20,7 +20,7 @@ public class Main {
 //        YandexPracticum.yandexPracticum();
 
 //         Свободно творческая часть
-//        FreePractise.freePractise();
+        FreePractise.freePractise();
 
 //        www.JavaRush.Com
 //        JavaRush.javaRush();
