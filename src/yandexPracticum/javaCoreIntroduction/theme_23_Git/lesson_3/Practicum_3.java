@@ -1,0 +1,22 @@
+package yandexPracticum.javaCoreIntroduction.theme_23_Git.lesson_3;
+
+import static helpers.Helpers.*;
+
+public class Practicum_3 {
+    public static void practicum_3() {
+        printSection("Practicum_3");
+
+        printSectionEnding();
+    }
+
+    private static void program_1() {
+        printSubSection("Program_1. ");
+
+        printSubSectionEnding();
+    }
+
+     /*private static void program_*() {
+        printSubSection("");
+        printSectionEnding();
+    }*/
+}

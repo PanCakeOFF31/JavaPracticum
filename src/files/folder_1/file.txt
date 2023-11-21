@@ -1,0 +1,7 @@
+This method copies a file to the target file with the options parameter
+specifying how the copy is performed. By default, the copy fails if the
+file already exists or is a symbolic link, except if the source
+and target are the same file, in which case the method completes without
+copying the file. File attributes are not required to be copied to the
+target file. If symbolic links are supported, and the file is a symbolic
+link, then the final target of the link is copied. If the file is.

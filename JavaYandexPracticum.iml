@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/src/yandexPracticum/javaCoreContinuation/theme_10" />
+      <excludeFolder url="file://$MODULE_DIR$/src/yandexPracticum/javaCoreContinuation/theme_11" />
+      <excludeFolder url="file://$MODULE_DIR$/src/yandexPracticum/javaCoreContinuation/theme_12" />
+      <excludeFolder url="file://$MODULE_DIR$/src/yandexPracticum/javaCoreContinuation/theme_13" />
+      <excludeFolder url="file://$MODULE_DIR$/src/yandexPracticum/javaCoreContinuation/theme_14" />
+      <excludeFolder url="file://$MODULE_DIR$/src/yandexPracticum/javaCoreContinuation/theme_15" />
+      <excludeFolder url="file://$MODULE_DIR$/src/yandexPracticum/javaCoreContinuation/theme_16" />
+      <excludeFolder url="file://$MODULE_DIR$/src/yandexPracticum/javaCoreContinuation/theme_17" />
+      <excludeFolder url="file://$MODULE_DIR$/src/yandexPracticum/javaCoreContinuation/theme_18" />
+      <excludeFolder url="file://$MODULE_DIR$/src/yandexPracticum/javaCoreContinuation/theme_19" />
+      <excludeFolder url="file://$MODULE_DIR$/src/yandexPracticum/javaCoreContinuation/theme_20" />
+      <excludeFolder url="file://$MODULE_DIR$/src/yandexPracticum/javaCoreContinuation/theme_5" />
+      <excludeFolder url="file://$MODULE_DIR$/src/yandexPracticum/javaCoreContinuation/theme_6" />
+      <excludeFolder url="file://$MODULE_DIR$/src/yandexPracticum/javaCoreContinuation/theme_7" />
+      <excludeFolder url="file://$MODULE_DIR$/src/yandexPracticum/javaCoreContinuation/theme_8" />
+      <excludeFolder url="file://$MODULE_DIR$/src/yandexPracticum/javaCoreContinuation/theme_9" />
+      <excludeFolder url="file://$MODULE_DIR$/src/yandexPracticum/sectionTemplate" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

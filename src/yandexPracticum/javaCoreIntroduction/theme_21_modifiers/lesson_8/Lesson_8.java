@@ -1,0 +1,12 @@
+package yandexPracticum.javaCoreIntroduction.theme_21_modifiers.lesson_8;
+
+import static helpers.Helpers.printSection;
+import static helpers.Helpers.printSectionEnding;
+
+public class Lesson_8 {
+    public static void lesson_8() {
+        printSection("Lesson_8. ");
+
+        printSectionEnding();
+    }
+}
