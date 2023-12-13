@@ -3,7 +3,8 @@ package tasks.task_;
 import static helpers.Helpers.*;
 
 public class Task_ {
-        private static final Test_Task_ test = new Test_Task_();
+    private static final Test_Task_ test = new Test_Task_();
+
     public static void task_() {
         printSection("Task_");
 

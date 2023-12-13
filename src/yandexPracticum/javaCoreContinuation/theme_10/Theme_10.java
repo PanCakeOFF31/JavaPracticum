@@ -2,14 +2,15 @@ package yandexPracticum.javaCoreContinuation.theme_10;
 
 import static helpers.Helpers.printArticle;
 import static helpers.Helpers.printArticleEnding;
+import static yandexPracticum.javaCoreContinuation.theme_10.lesson_1.Practicum_1.practicum_1;
 
 public class Theme_10 {
     public static void theme_10() {
-        printArticle("Theme_10. ");
+        printArticle("Theme_10. ALphabet");
 
 //
 //        lesson_1();
-//        practicum_1();
+        practicum_1();
 
 //
 //        lesson_2();

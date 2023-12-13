@@ -1,12 +1,9 @@
 package freePractise;
 
 
-import freePractise.comparartor.ComparatorClass;
+import freePractise.__functional_interfaces.Functions;
 import freePractise.deleteMeLater.DeleteMeLater;
-import freePractise.lambdaExpressions.LambdaExpressions;
-import freePractise.logger.Logger;
-import freePractise.nestedClasses.NestedClasses;
-import freePractise.records.Records;
+import freePractise.regex.Regex;
 
 import static helpers.Helpers.printArticle;
 import static helpers.Helpers.printArticleEnding;
@@ -19,6 +16,11 @@ public class FreePractise {
         printArticle("freePractise");
 
         DeleteMeLater.deleteMeLater();
+
+//        Regex.regex();
+//        Regex.regexOracle();
+//        IOStreams.ioStreams();
+//        ConversionCharacters.conversionCharacters();
 
 //                Разбор классов
 //        ClassResearching.classResearching();
@@ -55,6 +57,8 @@ public class FreePractise {
 //        NestedClasses.nestedClasses();
 //        LambdaExpressions.lambdaExpressions();
 //        ComparatorClass.comparatorClass();
+
+//        Functions.functions();
 
         printArticleEnding();
     }

@@ -1,116 +1,69 @@
 package freePractise.deleteMeLater;
 
-import static helpers.Helpers.*;
+import static helpers.Helpers.printSection;
+import static helpers.Helpers.printSectionEnding;
 
 public class DeleteMeLater {
 
     public static void deleteMeLater() {
         printSection("DeleteMeLater:");
 
-//        ArrayList
+
+/*
+        List<A> list = new ArrayList<>() {{
+            add(new A());
+            add(new B());
+            add(new C());
+        }};
+
+        List<A> copy = new ArrayList<>();
+
+        for (A a : list) {
+            copy.add(a.getMyCopy());
+        }
+*/
+
 
         printSectionEnding();
     }
-
-    private static void foo() {
-
-    }
 }
 
-class Test {
+interface Cloneable<T> {
+    T getMyCopy();
+}
 
-    int field;
-
-    public Test(int field) {
-        this.field = field;
-    }
-
+class A implements Cloneable<A> {
     @Override
     public String toString() {
-        return String.valueOf(field);
-    }
-
-    public int getField() {
-        return field;
-    }
-
-    public void setField(int field) {
-        this.field = field;
-    }
-
-}
-
-enum MenuOption {
-    DELETE,
-    INSERT;
-}
-
-interface A {
-    void foo();
-}
-
-interface B {
-    void foo();
-}
-
-interface C {
-    void foo();
-}
-
-interface D {
-    void foo();
-}
-
-interface E extends A, B {
-    void foo();
-
-    default void foo4() {
-
-    }
-}
-
-interface F extends C, D {
-    void foo();
-
-}
-
-abstract class G implements E {
-    @Override
-    public void foo() {
-
-    }
-
-    public void foo2() {
-
-    }
-
-    abstract public void foo3();
-}
-
-class H extends G {
-    @Override
-    public void foo2() {
-        super.foo2();
+        return "A";
     }
 
     @Override
-    public void foo3() {
-
+    public A getMyCopy() {
+        return new A();
     }
 }
 
-class TestA {
-    public void test() {
-        System.out.println("Вызвана версия с (TestA test)");
+class B extends A {
+    @Override
+    public String toString() {
+        return "B";
     }
 
-}
-
-class TestB extends TestA {
-    public void test() {
-        System.out.println("Вызвана версия с (TestB test)");
+    @Override
+    public B getMyCopy() {
+        return new B();
     }
 }
 
+class C extends B {
+    @Override
+    public String toString() {
+        return "C";
+    }
 
-
+    @Override
+    public B getMyCopy() {
+        return new C();
+    }
+}

@@ -7,18 +7,19 @@
 import freePractise.FreePractise;
 import gerbertShieldBook.GerbertShieldBook;
 import javaRush.JavaRush;
+import tasks.Tasks;
 import yandexPracticum.YandexPracticum;
 
 public class Main {
 
     public static void main(String[] args) {
 
-//          Герберт Шилдт - исчерпывающее руковдство по Java
+//          Shit Gerbert - исчерпывающее руководство по Java
 //        GerbertShieldBook.gerbertShieldBook();
 
-//        Обучающая платформа
+////        Обучающая платформа
 //        YandexPracticum.yandexPracticum();
-
+//
 //         Свободно творческая часть
         FreePractise.freePractise();
 
@@ -27,7 +28,5 @@ public class Main {
 
 //        Задачи из интернета
 //        Tasks.tasks();
-
-        
     }
 }

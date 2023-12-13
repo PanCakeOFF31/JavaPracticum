@@ -1,24 +1,23 @@
-package yandexPracticum.folderTemplate.lesson_1;
+package yandexPracticum.javaCoreContinuation.theme_16.lesson_1;
 
-import static helpers.Helpers.*;
+import static helpers.Helpers.printSection;
+import static helpers.Helpers.printSectionEnding;
 
 public class Practicum_1 {
     public static void practicum_1() {
         printSection("Practicum_1");
-
-        program_1();
-
+        
+//        program_1();
+//        program_2();
+//        program_3();
+//        program_4();
+//        program_5();
+//        program_6();
+//        program_7();
+//        program_8();
+//        program_9();
+        
         printSectionEnding();
     }
-
-    private static void program_1() {
-        printSubSection("Program_1. ");
-
-        printSubSectionEnding();
-    }
-
-     /*private static void program_*() {
-        printSubSection("");
-        printSectionEnding();
-    }*/
+    
 }

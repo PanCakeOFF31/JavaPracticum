@@ -2,6 +2,7 @@ package yandexPracticum.javaCoreContinuation.theme_14;
 
 import static helpers.Helpers.printArticle;
 import static helpers.Helpers.printArticleEnding;
+import static yandexPracticum.javaCoreContinuation.theme_14.lesson_1.Practicum_1.practicum_1;
 
 public class Theme_14 {
     public static void theme_14() {
@@ -9,7 +10,7 @@ public class Theme_14 {
 
 //
 //        lesson_1();
-//        practicum_1();
+        practicum_1();
 
 //
 //        lesson_2();

@@ -1,7 +1,5 @@
 package freePractise.nestedClasses;
 
-import freePractise.logger.Colors;
-
 import static helpers.Helpers.*;
 
 public class NestedClasses {

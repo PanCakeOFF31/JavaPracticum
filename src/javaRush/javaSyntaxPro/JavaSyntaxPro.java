@@ -10,6 +10,7 @@ import static javaRush.javaSyntaxPro.level_15.Level_15.level_15;
 import static javaRush.javaSyntaxPro.level_16.Level_16.level_16;
 import static javaRush.javaSyntaxPro.level_17.Level_17.level_17;
 import static javaRush.javaSyntaxPro.level_18.Level_18.level_18;
+import static javaRush.javaSyntaxPro.level_19.Level_19.level_19;
 import static javaRush.javaSyntaxPro.level_2.Level_2.level_2;
 import static javaRush.javaSyntaxPro.level_3.Level_3.level_3;
 import static javaRush.javaSyntaxPro.level_4.Level_4.level_4;
@@ -69,13 +70,13 @@ public class JavaSyntaxPro {
 //        level_16();
 
 //        Работа со временем и датой
-//        level_17();
+        level_17();
 
 //        Знакомство с ООП
-        level_18();
+//        level_18();
 
 //        Лямбда-функции
-//        level_19();
+        level_19();
 
 //        Задачи-игры на JavaRush
 //        level_20();

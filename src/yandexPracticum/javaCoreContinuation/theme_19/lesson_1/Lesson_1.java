@@ -1,4 +1,4 @@
-package yandexPracticum.folderTemplate.lesson_1;
+package yandexPracticum.javaCoreContinuation.theme_19.lesson_1;
 
 import static helpers.Helpers.printSection;
 import static helpers.Helpers.printSectionEnding;

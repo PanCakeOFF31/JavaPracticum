@@ -6,7 +6,7 @@ class Test_Task_ {
         return expected.equals(result);
     }
     boolean test1() {
-        return resultCheck(null,null);
+        return resultCheck(null,task.check());
     }
 
     boolean test2() {
@@ -18,9 +18,9 @@ class Test_Task_ {
     }
 
     void superTest() {
-        System.out.println("this.test1() = " + this.test1());
-        System.out.println("this.test2() = " + this.test2());
-        System.out.println("this.test3() = " + this.test3());
+        System.out.println("test1() = " + this.test1());
+        System.out.println("test2() = " + this.test2());
+        System.out.println("test3() = " + this.test3());
     }
 
 }

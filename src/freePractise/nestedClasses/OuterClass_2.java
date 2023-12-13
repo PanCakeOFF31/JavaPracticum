@@ -1,6 +1,6 @@
 package freePractise.nestedClasses;
 
-import freePractise.logger.Logger;
+import freePractise.logger_coloredString.Logger;
 
 public class OuterClass_2 {
     private int outer_a = 10;
@@ -20,7 +20,7 @@ public class OuterClass_2 {
     public class InnerClass_4 {
         public int inner_a = 20;
         public void method1() {
-            Logger.printCollingMethod();
+            Logger.printCallingMethod();
             System.out.println("outer_a = " + outer_a);
             System.out.println("inner_a = " + inner_a);
         }
@@ -31,7 +31,7 @@ public class OuterClass_2 {
     }
 
     public void methodOuterClass_2() {
-        Logger.printCollingMethod();
+        Logger.printCallingMethod();
         System.out.println("outer_a = " + outer_a);
 
         InnerClass_4 inner = new InnerClass_4();

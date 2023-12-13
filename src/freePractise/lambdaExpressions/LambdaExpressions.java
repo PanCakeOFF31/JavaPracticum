@@ -1,7 +1,7 @@
 package freePractise.lambdaExpressions;
 
-import freePractise.logger.Colors;
-import freePractise.logger.Logger;
+import freePractise.logger_coloredString.Colors;
+import freePractise.logger_coloredString.Logger;
 
 import static helpers.Helpers.*;
 

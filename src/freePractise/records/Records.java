@@ -1,6 +1,6 @@
 package freePractise.records;
 
-import freePractise.logger.Logger;
+import freePractise.logger_coloredString.Logger;
 
 import java.util.Arrays;
 

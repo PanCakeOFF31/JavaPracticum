@@ -12,10 +12,13 @@ public class CollectionsInterface {
 
 //        QueueCollection.queueCollectoin();
 
-        NotCollectionMap.notCollectionMap();
+//        NotCollectionMap.notCollectionMap();
 
 //        CollectionsClass.collectionsClass();
 
 //        SelfCreatedCollection.selfCreatedCollection();
+
+//        CollectionUtil.collectionUtil();
+
     }
 }

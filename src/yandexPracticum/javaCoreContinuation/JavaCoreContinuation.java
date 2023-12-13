@@ -1,8 +1,12 @@
 package yandexPracticum.javaCoreContinuation;
 
 
-import static yandexPracticum.javaCoreContinuation.theme_3.Theme_3.theme_3;
-import static yandexPracticum.javaCoreContinuation.theme_4.Theme_4.theme_4;
+import static yandexPracticum.javaCoreContinuation.theme_10.Theme_10.theme_10;
+import static yandexPracticum.javaCoreContinuation.theme_12.Theme_12.theme_12;
+import static yandexPracticum.javaCoreContinuation.theme_13.Theme_13.theme_13;
+import static yandexPracticum.javaCoreContinuation.theme_14.Theme_14.theme_14;
+import static yandexPracticum.javaCoreContinuation.theme_7_exceptions.Theme_7.theme_7;
+import static yandexPracticum.javaCoreContinuation.theme_9.Theme_9.theme_9;
 
 public class JavaCoreContinuation {
     public static void javaCoreContinuation() {
@@ -16,7 +20,7 @@ public class JavaCoreContinuation {
 //        theme_3();
 
 //        Коллекции: хеш-таблицы и множества
-        theme_4();
+//        theme_4();
 
 //        Спринт №5
 //        theme_5();
@@ -46,7 +50,7 @@ public class JavaCoreContinuation {
 //        theme_13();
 
 //        Unit-тесты
-//        theme_14();
+        theme_14();
 
 //        Спринт №7
 //        theme_15();

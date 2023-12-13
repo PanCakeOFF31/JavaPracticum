@@ -6,8 +6,15 @@ public class Level_18 {
     public static void level_18() {
         printArticle("Level 18. Инкапсуляция");
 
-//
-        program_1();
+                program_1();
+//        program_2();
+//        program_3();
+//        program_4();
+//        program_5();
+//        program_6();
+//        program_7();
+//        program_8();
+//        program_9();
 
 
         printArticleEnding();

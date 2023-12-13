@@ -49,8 +49,15 @@ public class Level_17 {
 //        ZoneDateTime
 //        program_35();
 
+//        DateTimeFormatter
         program_40();
-        program_41();
+//        program_41();
+
+//        Duration
+        program_45();
+//        Period
+        program_46();
+        program_47();
 
         printSectionEnding();
     }
@@ -732,10 +739,45 @@ public class Level_17 {
 
         printSectionEnding();
     }
-    /*private static void program_*() {
-        printSubSection("Program_*. ");
-        printSubSectionEnding();
-    }*/
+
+    private static void program_45() {
+        printSection("Program_45. Duration");
+
+        LocalTime now = LocalTime.now();
+        LocalTime after = now.plusHours(10).plusMinutes(10).plusSeconds(10);
+        after = after.plusNanos(1000321);
+
+        Duration dur = Duration.between(now, after);
+
+        System.out.println("now = " + now);
+        System.out.println("after = " + after);
+        System.out.println("dur = " + dur);
+
+        printSectionEnding();
+    }
+
+    private static void program_46() {
+        printSection("Program_46. Period");
+
+        LocalDate now = LocalDate.now();
+        LocalDate after = now.plusDays(10).plusWeeks(3);
+        after = after.plusYears(1).plusMonths(3);
+
+        Period period = Period.between(now, after);
+
+        System.out.println("now = " + now);
+        System.out.println("after = " + after);
+        System.out.println("period = " + period);
+
+        printSectionEnding();
+    }
+
+    private static void program_47() {
+        printSection("Program_47. Period");
+
+
+        printSectionEnding();
+    }
 }
 
 

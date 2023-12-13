@@ -11,12 +11,13 @@ public class ComparatorClass {
         printArticle("Comparator Class");
 
         program_1();
+        program_2();
 
         printArticleEnding();
     }
 
     private static void program_1() {
-        printSection("Program_1. ");
+        printSection("Program_1. anonymous Comparator, class extends Comparator");
 
         Comparator<MyClass> reverseIntegerList = new Comparator<>() {
             @Override
@@ -51,6 +52,44 @@ public class ComparatorClass {
         System.out.println("Обратная сортировка через экземпляр анонимного класса");
         tempList.sort(reverseIntegerList);
         System.out.println("tempList = " + tempList);
+
+        printSectionEnding();
+    }
+
+    private static void program_2() {
+        printSection("Program_2. reversedComparator, lambda Comparator");
+
+        ArrayList<Integer> list = new ArrayList<>() {{
+            this.add(15);
+            this.add(5);
+            this.add(30);
+            this.add(35);
+        }};
+
+
+        Comparator<Integer> directSort = new Comparator<>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                return o1 - o2;
+            }
+        };
+
+        Comparator<Integer> reverseSort = directSort.reversed();
+
+        Comparator<Integer> lambdaSort = (o1, o2) -> o1 - o2;
+
+        Collections.shuffle(list);
+        list.sort(directSort);
+        System.out.println("list = " + list);
+
+        Collections.shuffle(list);
+        list.sort(reverseSort);
+        System.out.println("list = " + list);
+
+        Collections.shuffle(list);
+        list.sort(lambdaSort);
+        System.out.println("list = " + list);
+
 
         printSectionEnding();
     }

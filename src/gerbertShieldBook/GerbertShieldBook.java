@@ -3,9 +3,9 @@ package gerbertShieldBook;
 //import static GerbertShieldBook.chapter_2.Chapter_2.chapter_2;
 //import static GerbertShieldBook.chapter_3.Chapter_3.chapter_3;
 
-import static gerbertShieldBook.chapter_13.Chapter_13.chapter_13;
-import static gerbertShieldBook.chapter_14.Chapter_14.chapter_14;
-import static gerbertShieldBook.chapter_17.Chapter_17.chapter_17;
+import gerbertShieldBook.chapter_20.Chapter_20;
+import gerbertShieldBook.chapter_21.Chapter_21;
+import gerbertShieldBook.chapter_30.Chapter_30;
 
 public class GerbertShieldBook {
 
@@ -57,6 +57,21 @@ public class GerbertShieldBook {
 
 //       Chapter 17. Switch expression, Record, Text Block, Sealed class/interface
 //        chapter_17();
+
+//        String Handling
+//        Chapter_18.chapter_18();
+
+//        java.lang
+//        Chapter_19.chapter_19();
+
+//          java.util - Part 1. The Collections Framework
+//        Chapter_20.chapter_20();
+
+//        java.util - Part 2. More Utility Classes
+        Chapter_21.chapter_21();
+
+//        The Stream API
+        Chapter_30.chapter_30();
 
     }
 }

@@ -7,6 +7,26 @@ public class ColoredString {
     private Colors color = null;
     private boolean[] options = null;
 
+    public static ColoredString of(String text, Colors color) {
+        return new ColoredString(text, color);
+    }
+
+    public static ColoredString of(String text, Colors color, boolean... options) {
+        return new ColoredString(text, color,options);
+    }
+
+    public ColoredString(String text, boolean... options) {
+        if (text == null || options == null || options.length > 3)
+            throw new RuntimeException("ОЛО");
+
+        this.color = Colors.NOT_COLOR;
+        this.uncoloredText = text;
+        this.coloredText = uncoloredText;
+        this.options = new boolean[0];
+
+        initializeOptions();
+    }
+
     public ColoredString(String text, Colors color) {
         if (text == null || color == null)
             throw new RuntimeException("ОЛО");
@@ -20,7 +40,7 @@ public class ColoredString {
     }
 
     public ColoredString(String text, Colors color, boolean... options) {
-        this(text,color);
+        this(text, color);
 
         if (options == null || options.length > 3) {
             throw new RuntimeException("ОЛО");
@@ -41,6 +61,7 @@ public class ColoredString {
 
         initializeOptions();
     }
+
     public ColoredString(ColoredString coloredString, Colors color) {
         this(coloredString);
 
@@ -75,11 +96,12 @@ public class ColoredString {
     private void initializeOptions() {
         String handledColorText = this.color.toString();
 
-        switch (this.options.length) {
+        handledColorText = switch (this.options.length) {
             case 1 -> {
                 if (this.options[0]) {
                     handledColorText = boldHandling(handledColorText);
                 }
+                yield handledColorText;
             }
             case 2 -> {
                 if (this.options[0])
@@ -87,6 +109,8 @@ public class ColoredString {
 
                 if (this.options[1])
                     handledColorText = italicHandling(handledColorText);
+
+                yield handledColorText;
             }
             case 3 -> {
                 if (this.options[0])
@@ -97,8 +121,10 @@ public class ColoredString {
 
                 if (this.options[2])
                     handledColorText = underlineHandling(handledColorText);
+                yield handledColorText;
             }
-        }
+            default -> handledColorText = handledColorText;
+        };
 
         correctColoredText(handledColorText);
     }

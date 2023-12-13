@@ -9,7 +9,8 @@ public enum Colors {
     PURPLE("\u001B[35m", "PURPLE"),
     CYAN("\u001B[36m", "CYAN"),
     WHITE("\u001B[37m", "WHITE"),
-    RESET("\u001B[0m", "RESET");
+    RESET("\u001B[0m", "RESET"),
+    NOT_COLOR("\u001B[38m", "NOT_COLOR");
     private final String colorCode;
     private final String colorName;
 
@@ -23,8 +24,8 @@ public enum Colors {
         return colorCode;
     }
 
-    public ColoredString getColorName() {
-        return new ColoredString(colorName,this);
+    public ColoredString getColoredString() {
+        return new ColoredString(colorName, this);
     }
 
     public String[] getCodes() {
@@ -38,8 +39,4 @@ public enum Colors {
 
         return codes;
     }
-
-//    public String getColorName() {
-//        return this.colorName;
-//    }
 }
