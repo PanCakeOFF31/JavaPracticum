@@ -1,5 +1,7 @@
 package freePractise.deleteMeLater;
 
+import java.time.LocalDateTime;
+
 import static helpers.Helpers.printSection;
 import static helpers.Helpers.printSectionEnding;
 
@@ -23,6 +25,9 @@ public class DeleteMeLater {
         }
 */
 
+
+        LocalDateTime now = LocalDateTime.now();
+        System.out.println("now = " + now);
 
         printSectionEnding();
     }

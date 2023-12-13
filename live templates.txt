@@ -1,0 +1,54 @@
+<template name="pa" value="printArticle(&quot;$EDIT$&quot;);&#10;&#10;$END$" description="printArticle() print Helpers' article" toReformat="false" toShortenFQNames="true">
+  <variable name="EDIT" expression="" defaultValue="" alwaysStopAt="true" />
+  <context>
+    <option name="JAVA_CODE" value="true" />
+  </context>
+</template>
+<template name="pae" value="printArticleEnding();$END$" description="printArticleEnding() print Helpers' article ending" toReformat="false" toShortenFQNames="true">
+  <context>
+    <option name="JAVA_CODE" value="true" />
+  </context>
+</template>
+<template name="prgrms" value="//        program_$EDIT$1();&#10;//        program_$EDIT$2();&#10;//        program_$EDIT$3();&#10;//        program_$EDIT$4();&#10;//        program_$EDIT$5();&#10;//        program_$EDIT$6();&#10;//        program_$EDIT$7();&#10;//        program_$EDIT$8();&#10;//        program_$EDIT$9();$END$" toReformat="false" toShortenFQNames="true">
+  <variable name="EDIT" expression="" defaultValue="" alwaysStopAt="true" />
+  <context>
+    <option name="JAVA_CODE" value="true" />
+  </context>
+</template>
+<template name="prsvf" value="private static void foo(){&#10;  $END$&#10;}" description="foo() private static void function" toReformat="false" toShortenFQNames="true">
+  <context>
+    <option name="JAVA_CODE" value="true" />
+  </context>
+</template>
+<template name="prsvp" value="private static void program_$EDIT1$() {&#10;    printSection(&quot;Program_$EDIT1$. $EDIT2$$END$&quot;);&#10;&#10;     &#10;            &#10;    printSectionEnding();&#10;}" description="promgram_*() private static void program" toReformat="false" toShortenFQNames="true">
+  <variable name="EDIT1" expression="" defaultValue="" alwaysStopAt="true" />
+  <variable name="EDIT2" expression="" defaultValue="" alwaysStopAt="true" />
+  <context>
+    <option name="JAVA_CODE" value="true" />
+  </context>
+</template>
+<template name="ps" value="printSection(&quot;$END$&quot;);" description="printSection() print Helpers' section" toReformat="false" toShortenFQNames="true">
+  <context>
+    <option name="JAVA_CODE" value="true" />
+  </context>
+</template>
+<template name="pse" value="printSectionEnding();&#10;$END$" description="printSectionEnding() print Helpers' section ending" toReformat="false" toShortenFQNames="true">
+  <context>
+    <option name="JAVA_CODE" value="true" />
+  </context>
+</template>
+<template name="pss" value="printSubSection(&quot;$END$&quot;);" description="printSubSection() print Helpers' sub section" toReformat="false" toShortenFQNames="true">
+  <context>
+    <option name="JAVA_CODE" value="true" />
+  </context>
+</template>
+<template name="psse" value="printSubSectionEnding();&#10;$END$" description="printSubSectionEnding() print Helpers' sub section ending" toReformat="false" toShortenFQNames="true">
+  <context>
+    <option name="JAVA_CODE" value="true" />
+  </context>
+</template>
+<template name="psvf" value="public static void foo(){&#10;  $END$&#10;}" description="foo() public static void function" toReformat="false" toShortenFQNames="true">
+  <context>
+    <option name="JAVA_CODE" value="true" />
+  </context>
+</template>
