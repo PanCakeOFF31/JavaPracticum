@@ -13,6 +13,8 @@ import static helpers.Helpers.printSectionEnding;
 import static java.time.Month.DECEMBER;
 
 public class Practicum_1 {
+    private static ZoneId zone = ZoneId.systemDefault();
+
     public static void practicum_1() {
         printSection("Practicum_1");
 
@@ -38,10 +40,14 @@ public class Practicum_1 {
 //        program_7();
 
 //        ZoneId
-        program_8();
-        program_9();
+//        program_8();
+//        program_9();
 
-        program_10();
+//       Offset
+//        program_10();
+
+//        ZonedDateTime: ofInstant()
+        program_11();
 
         printSectionEnding();
     }
@@ -130,6 +136,39 @@ public class Practicum_1 {
             System.out.println("past.isBefore(present) = " + past.isBefore(present));
             System.out.println("future.isAfter(present) = " + future.isAfter(present));
             System.out.println("present.equals(present) = " + present.equals(present));
+        }
+
+        Logger.printMessage("Временная метка с TemporalAmount");
+        {
+            Instant point = Instant.now();
+            Duration duration = Duration.ofHours(1);
+            System.out.println("point = " + point);
+
+            point = point.plus(duration);
+            System.out.println("point = " + point);
+        }
+
+        Logger.printMessage("Временная метка в конкретной зоне");
+        {
+            Instant pointInUTC = Instant.now();
+            ZonedDateTime pointInMyZone = pointInUTC.atZone(zone);
+
+            System.out.println("pointInUTC = " + pointInUTC);
+            System.out.println("pointInMyZone = " + pointInMyZone);
+
+            ZonedDateTime pointInUTCZone = pointInMyZone.withZoneSameInstant(ZoneId.of("UTC"));
+            System.out.println("pointInUTCZone = " + pointInUTCZone);
+        }
+
+        Logger.printMessage("Временная метка TemporalUnit????");
+        {
+            Duration duration = Duration.ofHours(1).plusDays(1000);
+            duration.getUnits().forEach(System.out::println);
+            System.out.println("duration = " + duration);
+
+            Period period = Period.ofMonths(1);
+            System.out.println("period = " + period);
+            period.getUnits().forEach(System.out::println);
         }
 
 //        System.out.println(Instant.now());
@@ -380,17 +419,36 @@ public class Practicum_1 {
     }
 
     private static void program_10() {
-        printSection("Program_10. ");
+        printSection("Program_10. ZoneOffset");
 
-        System.out.printf("%-15s\n","pen");
-        System.out.printf("%15s\n","pen");
-        System.out.printf("%1.5s\n","penpenpenpen");
+        System.out.println("ZoneOffset.MIN = " + ZoneOffset.MIN);
+        System.out.println("ZoneOffset.MAX = " + ZoneOffset.MAX);
+
+        ZoneOffset offset = ZoneOffset.UTC;
+        System.out.println("offset = " + offset);
+
+        ZoneOffset offset1 = ZoneOffset.of("+03:00");
+        System.out.println("offset1 = " + offset1);
+
+        OffsetDateTime nowInGubkin = Instant.now().atOffset(ZoneOffset.of("+03:00"));
+        System.out.println("nowInGubkin = " + nowInGubkin);
+
+        ZonedDateTime nowInGubkin1 = Instant.now().atZone(zone);
+        System.out.println("nowInGubkin1 = " + nowInGubkin1);
+
+        printSectionEnding();
+    }
+    private static void program_11() {
+        printSection("Program_11. ZoneDateTime.ofInstant()");
+
+        ZonedDateTime zdt = ZonedDateTime.ofInstant(Instant.now(),zone);
+        System.out.println("zdt = " + zdt);
 
 
 
         printSectionEnding();
     }
-    }
+}
 
 
 

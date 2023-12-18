@@ -5,7 +5,7 @@ import static helpers.Helpers.printArticleEnding;
 
 public class Theme_16 {
     public static void theme_16() {
-        printArticle("Theme_16. ");
+        printArticle("Theme_16. Internet, HTTP, JSON");
 
 //
 //        lesson_1();

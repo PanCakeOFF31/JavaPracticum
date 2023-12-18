@@ -47,10 +47,10 @@ public class JavaCoreContinuation {
 //        theme_12();
 
 //        Время и дата
-//        theme_13();
+        theme_13();
 
 //        Unit-тесты
-        theme_14();
+//        theme_14();
 
 //        Спринт №7
 //        theme_15();

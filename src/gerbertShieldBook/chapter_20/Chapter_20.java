@@ -74,7 +74,7 @@ public class Chapter_20 {
 //        program_13();
 
 //        Iterator, ListIterator
-//        program_14();
+        program_14();
 
 //        Spliterator
 //        program_15();

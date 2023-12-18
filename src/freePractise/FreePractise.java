@@ -1,9 +1,8 @@
 package freePractise;
 
 
-import freePractise.__functional_interfaces.Functions;
+import freePractise.__IO.IOStreams;
 import freePractise.deleteMeLater.DeleteMeLater;
-import freePractise.regex.Regex;
 
 import static helpers.Helpers.printArticle;
 import static helpers.Helpers.printArticleEnding;
@@ -15,7 +14,7 @@ public class FreePractise {
     public static void freePractise() {
         printArticle("freePractise");
 
-        DeleteMeLater.deleteMeLater();
+//        DeleteMeLater.deleteMeLater();
 
 //        Regex.regex();
 //        Regex.regexOracle();

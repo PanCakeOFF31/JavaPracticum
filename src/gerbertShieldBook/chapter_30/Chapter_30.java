@@ -1,19 +1,37 @@
 package gerbertShieldBook.chapter_30;
 
+import gerbertShieldBook.chapter_14.auxiliaryClasses.IntegerGenericClass;
 import helpers.coloredString.Logger;
 
 import java.util.*;
-import java.util.function.BiConsumer;
-import java.util.function.BinaryOperator;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.regex.Pattern;
+import java.util.stream.*;
 
 import static helpers.Helpers.*;
 
 public class Chapter_30 {
+    private final static String[] strings = {
+            "away",
+            "anger",
+            "ecology",
+            "eCoLogy",
+            "document",
+            "fold",
+            "damp",
+            "football",
+            "cat",
+            "bandit",
+            "damper",
+            "accept",
+            "lower",
+            "fanny",
+            "center",
+            "apple",
+            "cup",
+            "burger",
+            "chess"
+    };
+
     public static void chapter_30() {
         printArticle("Chapter_30. The Stream API");
 
@@ -29,12 +47,23 @@ public class Chapter_30 {
 //        program_4();
 
 //        Collection
-        program_5();
+//        program_5();
+
+//        Primitive streams
 //        program_6();
+
+//        Map with strings
 //        program_7();
+
+//        Iterator
 //        program_8();
+//        Spliterator
 //        program_9();
+
+//        noneMatch(), allMatch(), anyMatch()
 //        program_10();
+
+//          of
 //        program_11();
 //        program_12();
 //        program_13();
@@ -70,6 +99,7 @@ public class Chapter_30 {
         list.stream().sorted().filter(n -> n % 2 == 1).forEach(n -> System.out.print(n + " "));
         System.out.println("]");
 
+        Logger.printMessage("Минимальный элемент с инвертированным компаратором - максимальный");
         var stream3 = list.stream();
         stream3.
                 min(Comparator.<Integer>naturalOrder().reversed())
@@ -162,6 +192,125 @@ public class Chapter_30 {
 
         var set = list.stream().filter(n -> n % 2 == 0).collect(Collectors.toSet());
         System.out.println("set = " + set);
+
+        printSectionEnding();
+    }
+
+    private static void program_6() {
+        printSection("Program_6. Primitive streams");
+
+        double[] doubles = {1.0, 2.0};
+        long[] longs = {1L, 2L};
+        int[] ints = {1, 2};
+
+        DoubleStream stream1 = Arrays.stream(doubles);
+        LongStream stream2 = Arrays.stream(longs);
+        IntStream stream3 = Arrays.stream(ints);
+
+        stream1.max().ifPresent(d -> System.out.println("Максимальный в DoubleStream = " + d));
+        stream2.max().ifPresent(d -> System.out.println("Максимальный в LongStream = " + d));
+        stream3.max().ifPresent(d -> System.out.println("Максимальный в IntStream = " + d));
+
+        printSectionEnding();
+    }
+
+    private static void program_7() {
+        printSection("Program_7. Map with strings");
+
+        ArrayList<String> strings = new ArrayList<>() {{
+            add("maxim");
+            add("max");
+            add("min");
+            add("minim");
+        }};
+
+//        Удобный способ быстро отфильтровать с помощью регулярного выражения
+        strings.stream().filter(str -> Pattern.matches("[mM].*", str)).forEach(System.out::println);
+
+        printSectionEnding();
+    }
+
+    private static void program_8() {
+        printSection("Program_8. Iterator<E>, iterator()");
+
+        Logger.printMessage("Итератор в коллекции");
+        {
+            List<String> str = new ArrayList<>(Arrays.asList(strings));
+            Iterator<String> iterator = str.iterator();
+            int initialSize = str.size();
+
+            for (int i = 0; i < initialSize - 3; i++) {
+                iterator.next();
+                iterator.remove();
+            }
+
+            Logger.printMessage("forEachRemaining()");
+//        while (iterator.hasNext())
+//            System.out.println(iterator.next());
+            iterator.forEachRemaining(System.out::println);
+        }
+
+        Logger.printMessage("Итератор в stream");
+        {
+            List<String> str = new ArrayList<>(Arrays.asList(strings));
+            str.stream()
+                    .skip(str.size() - 3)
+                    .iterator()
+                    .forEachRemaining(System.out::println);
+        }
+
+        printSectionEnding();
+    }
+
+    private static void program_9() {
+        printSection("Program_9. Spliterator<E>, spliterator()");
+
+        Logger.printMessage("Сплитератор в коллекции");
+        {
+            List<String> str = new ArrayList<>(Arrays.asList(strings));
+            Spliterator<String> spliterator = str.spliterator();
+
+            System.out.println("Исходный размер = " + spliterator.estimateSize());
+
+            spliterator.tryAdvance(System.out::println);
+            spliterator.tryAdvance(System.out::println);
+
+            Logger.printMessage("Первая часть splitted spliterator");
+            Spliterator<String> remainingPart = spliterator.trySplit();
+            if (remainingPart != null)
+                remainingPart.forEachRemaining(System.out::println);
+
+            Logger.printMessage("Оставшаяся часть ");
+            spliterator.forEachRemaining(System.out::println);
+        }
+
+        Logger.printMessage("Сплитератор в stream");
+        {
+            List<String> str = new ArrayList<>(Arrays.asList(strings));
+            str.stream().spliterator().forEachRemaining(System.out::println);
+        }
+
+        printSectionEnding();
+    }
+
+    private static void program_10() {
+        printSection("Program_10. nonMatch");
+
+        List<String> str = new ArrayList<>(Arrays.asList(strings));
+
+        System.out.println(str.stream().anyMatch(s -> Pattern.matches("[aA].*", s)));
+        System.out.println(str.stream().anyMatch(s -> Pattern.matches("[zZ].*", s)));
+        System.out.println(str.stream().noneMatch(s -> Pattern.matches("[aA].*", s)));
+        System.out.println(str.stream().noneMatch(s -> Pattern.matches("[zZ].*", s)));
+
+        printSectionEnding();
+    }
+
+    private static void program_11() {
+        printSection("Program_11. of(), generate() ");
+
+        Stream<Integer> intStream = Stream.of(10, 20, 30);
+        intStream.max(Comparator.naturalOrder()).ifPresent(System.out::println);
 
         printSectionEnding();
     }

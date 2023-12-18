@@ -5,7 +5,7 @@ import static helpers.Helpers.printArticleEnding;
 
 public class Theme_18 {
     public static void theme_18() {
-        printArticle("Theme_18. ");
+        printArticle("Theme_18. Сетевые запросы");
 
 //
 //        lesson_1();

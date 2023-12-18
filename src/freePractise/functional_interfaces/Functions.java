@@ -1,4 +1,4 @@
-package freePractise.__functional_interfaces;
+package freePractise.functional_interfaces;
 
 import helpers.coloredString.Logger;
 

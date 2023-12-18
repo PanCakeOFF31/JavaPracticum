@@ -5,36 +5,85 @@ import helpers.coloredString.Logger;
 
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Comparator;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Function;
+import java.util.function.IntBinaryOperator;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 import static helpers.Helpers.printSection;
 import static helpers.Helpers.printSectionEnding;
 
 public class Practicum_1 {
+    private final static String[] strings = {
+            "away",
+            "anger",
+            "ecology",
+            "eCoLogy",
+            "document",
+            "fold",
+            "damp",
+            "football",
+            "cat",
+            "bandit",
+            "damper",
+            "accept",
+            "lower",
+            "fanny",
+            "center",
+            "apple",
+            "cup",
+            "burger",
+            "chess"
+    };
+
+    private final static int[] ints = {-3, 32, 43, -9, 39, -34, 46, -26, -21, -3, -46, 48, 38, 23, 13, 2, -3, -40, 9, -14};
+    private final static Integer[] integers = {-3, 32, 43, -9, 39, -34, 46, -26, -21, -3, -46, 48, 38, 23, 13, 2, -3, -40, 9, -14};
+
+    private final static List<String> stringList = new ArrayList<>(Arrays.asList(strings));
+    private final static List<Integer> intList = new ArrayList<>(Arrays.asList(integers));
+
     public static void practicum_1() {
         printSection("Practicum_1");
 
+//        The simple example, V1
 //        program_1();
+
 //        Capturing Variable
 //        program_2();
 
 //        The method reference
 //        program_3();
 
-        program_4();
+//        program_4();
+
+//        The simple example, V2
 //        program_5();
+
+//        Returning a function
 //        program_6();
+
+//        Annotation - @FunctionalInterface
 //        program_7();
+
+//        Stream: peek()
 //        program_8();
+
+//        Optional: orElseThrow()
 //        program_9();
+        
+        program_10();
+
+        
+        
 
         printSectionEnding();
     }
 
     private static void program_1() {
-        printSection("Program_1. The Simple Example");
+        printSection("Program_1. The Simple Example version 1");
 
         List<String> paths = new ArrayList<>();
 
@@ -46,10 +95,13 @@ public class Practicum_1 {
 
         System.out.println(paths.stream().map(path -> Paths.get(path).getFileName().toString()).toList());
 
-        List<String> files = paths.stream().filter(path -> !path.endsWith(".tmp")).map(path -> Paths.get(path).getFileName().toString()).map(fileName -> {
-            if (fileName.startsWith("hide")) return "very_secret_file";
-            else return fileName;
-        }).toList();
+        List<String> files = paths.stream()
+                .filter(path -> !path.endsWith(".tmp"))
+                .map(path -> Paths.get(path).getFileName().toString())
+                .map(fileName -> {
+                    if (fileName.startsWith("hide")) return "very_secret_file";
+                    else return fileName;
+                }).toList();
 
         System.out.println(files);
 
@@ -69,10 +121,10 @@ public class Practicum_1 {
 
         printLambda(capturing);
 
-//        String otherName = "Maxim";
-//        Capturing capturing1 = () -> System.out.println(otherName);
-//
-//        printLambda(capturing1);
+        String otherName = "Maxim";
+        Capturing capturing1 = () -> System.out.println(otherName);
+
+        printLambda(capturing1);
 //        otherName = "max";
 
         printSectionEnding();
@@ -165,11 +217,115 @@ public class Practicum_1 {
     }
 
     private static void program_5() {
-        printSection("Program_5. ");
+        printSection("Program_5. The simple example, version 2");
 
-//        Comparator.
-//                Optional.of(1).isPresent()
-//        printSectionEnding();
+        List<String> paths = new ArrayList<>();
+
+        paths.add("/home/bigbrother/docs/hide.txt");
+        paths.add("hide.txt");
+        paths.add("file3.tmp");
+        paths.add("/home/bigbrother/downloads/movie.mp4");
+        paths.add("/home/bigbrother/downloads/java_book.pdf");
+
+        System.out.println(paths.stream().map(path -> Paths.get(path).getFileName().toString()).toList());
+
+//        Отфильтровать по расширению
+        Predicate<String> filter = path -> !path.endsWith(".tmp");
+//        Трансформировать в названия файлов
+        Function<String, String> map1 = path -> Paths.get(path).getFileName().toString();
+//        Переименовать секретные файлы
+        Function<String, String> map2 = fileName -> {
+            if (fileName.startsWith("hide")) return "very_secret_file";
+            else return fileName;
+        };
+
+        paths.stream()
+                .filter(filter)
+                .map(map1)
+                .map(map2)
+                .toList()
+                .forEach(System.out::println);
+
+        printSectionEnding();
+    }
+
+    private static void program_6() {
+        printSection("Program_6. Returning lambda-expression from method");
+
+        String sign = "*";
+        int result1 = getOperation(sign).applyAsInt(10, 15);
+        System.out.println("result1 = " + result1);
+
+        sign = "+";
+        int result2 = getOperation(sign).applyAsInt(10, 15);
+        System.out.println("result2 = " + result2);
+
+        printSectionEnding();
+    }
+
+    private static IntBinaryOperator getOperation(String sign) {
+        switch (sign) {
+            case "+":
+                return (value1, value2) -> value1 + value2;
+            case "-":
+                return (value1, value2) -> value1 - value2;
+            case "*":
+                return (value1, value2) -> value1 * value2;
+            case "/":
+                return (value1, value2) -> value1 / value2;
+            default:
+                throw new IllegalArgumentException("Неизвестная операция");
+        }
+    }
+
+    private static void program_7() {
+        printSection("Program_7. Annotation");
+
+        @FunctionalInterface
+        interface Function {
+            void execute();
+//            void execute1();
+        }
+
+        Function function = () -> System.out.println("Hi");
+        function.execute();
+        function.execute();
+
+        printSectionEnding();
+    }
+
+    private static void program_8() {
+        printSection("Program_8. Stream: peek()");
+
+        System.out.println("stringList = " + stringList);
+
+        stringList.stream()
+                .peek(System.out::println)
+                .collect(Collectors.toList());
+
+
+        printSectionEnding();
+    }
+
+    private static void program_9() {
+        printSection("Program_9. Optional: orElseThrow()");
+
+        Optional<String> optional = Optional.of("maxim");
+        Optional<String> optional1 = Optional.empty();
+
+        optional.orElseThrow();
+        optional1.orElseThrow(ArithmeticException::new);
+//        optional1.orElseThrow();
+
+        printSectionEnding();
+    }
+    
+    private static void program_10() {
+        printSection("Program_10. ");
+    
+        
+                
+        printSectionEnding();
     }
 }
 

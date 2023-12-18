@@ -1,6 +1,8 @@
 // Вспомогательный класс, для визуального оформления в консоль вывода
 package helpers;
 
+import helpers.coloredString.Logger;
+
 public class Helpers {
     private static final String ARTICLE_LINE = "======================================================================";
     private static final String SECTION_LINE = "----------------------------------------------------------------------";
@@ -17,7 +19,8 @@ public class Helpers {
 
     public static void printArticle(String text) {
         System.out.println(ARTICLE_LINE);
-        System.out.println("\t\t\t" + text);
+//        System.out.println("\t\t\t" + text);
+        Logger.printMessage("\t\t\t" + text);
     }
 
     public static void printArticleEnding() {
@@ -30,7 +33,8 @@ public class Helpers {
 
     public static void printSection(String text) {
         System.out.println(SECTION_LINE);
-        System.out.println("\t\t" + text);
+//        System.out.println("\t\t" + text);
+        Logger.printMessage("\t\t" + text);
     }
 
     public static void printSectionEnding() {
@@ -43,7 +47,8 @@ public class Helpers {
 
     public static void printSubSection(String text) {
         System.out.println(SUB_SECTION_LINE);
-        System.out.println("\t" + text);
+//        System.out.println("\t" + text);
+        Logger.printMessage("\t" + text);
     }
 
     public static void printSubSectionEnding() {
@@ -56,7 +61,8 @@ public class Helpers {
 
     public static void printPart(String text) {
         System.out.println(PART);
-        System.out.println("\t" + text);
+//        System.out.println("\t" + text);
+        Logger.printMessage("\t" + text);
     }
 
     public static void printTextWithTab(String text) {
