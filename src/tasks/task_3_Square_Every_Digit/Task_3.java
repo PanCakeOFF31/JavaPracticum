@@ -33,6 +33,7 @@ public class Task_3 {
             module = module * 10;
             counter++;
         }
+
         result = Integer.parseInt(tempString.toString());
 
         return result;

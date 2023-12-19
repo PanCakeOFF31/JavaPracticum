@@ -18,15 +18,16 @@ public class Main {
 //        GerbertShieldBook.gerbertShieldBook();
 
 ////        Обучающая платформа
-        YandexPracticum.yandexPracticum();
+//        YandexPracticum.yandexPracticum();
 //
 //         Свободно творческая часть
-//        FreePractise.freePractise();
+        FreePractise.freePractise();
 
 //        www.JavaRush.Com
 //        JavaRush.javaRush();
 
 //        Задачи из интернета
-        Tasks.tasks();
+//        Tasks.tasks();
+//        Использую Junit, поэтому не нужно запускать. src/tasks/task_...
     }
 }

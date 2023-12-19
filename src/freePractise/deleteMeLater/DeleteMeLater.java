@@ -2,12 +2,11 @@ package freePractise.deleteMeLater;
 
 import helpers.coloredString.Logger;
 
-import java.io.File;
-import java.nio.file.FileSystems;
-import java.util.Arrays;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.TreeSet;
+import java.util.function.UnaryOperator;
 
 import static helpers.Helpers.printSection;
 import static helpers.Helpers.printSectionEnding;
@@ -16,26 +15,6 @@ public class DeleteMeLater {
 
     public static void deleteMeLater() {
         printSection("DeleteMeLater:");
-
-
-        String original = "a,b,c,,,,";
-        String[] result = original.split(",");
-        System.out.println(Arrays.toString(result));
-        System.out.println("result.length = " + result.length);
-
-/*
-        List<A> list = new ArrayList<>() {{
-            add(new A());
-            add(new B());
-            add(new C());
-        }};
-
-        List<A> copy = new ArrayList<>();
-
-        for (A a : list) {
-            copy.add(a.getMyCopy());
-        }
-*/
 
         class A implements Comparable<A> {
             int a;
@@ -72,14 +51,56 @@ public class DeleteMeLater {
             }
         }
 
-        TreeSet<A> tree = new TreeSet<>(Comparator.naturalOrder());
-        tree.add(new A(20, "2"));
-        tree.add(new A(30, "3"));
-        tree.add(new A(10, "1"));
-        tree.remove(new A(30, "4"));
-        tree.add(new A(30, "4"));
+//        for (int i = 0; i < 10; i++) {
+//            if (i == 0)
+//                try {
+//                    throw new ArithmeticException();
+//                } catch (ArithmeticException e) {
+//
+//                }
+//            if (i == 5)
+//                throw new ArithmeticException();
+//        }
 
-        System.out.println(tree);
+        Logger.printMessage("TreeSet");
+        {
+//            TreeSet требует переопределения метода compareTo() для корректной работы
+            TreeSet<A> tree = new TreeSet<>(Comparator.naturalOrder());
+            tree.add(new A(20, "2"));
+            tree.add(new A(10, "1"));
+            tree.remove(new A(30, "4"));
+            tree.add(new A(40, "4"));
+
+            System.out.println(tree);
+        }
+
+        Logger.printMessage("HashSet");
+        {
+//            HashSet требует переопределения метода hashCode() и equals() для корректной работы
+            HashSet<A> tree = new HashSet<>();
+            tree.add(new A(20, "2"));
+            tree.add(new A(30, "3"));
+            tree.add(new A(10, "1"));
+            tree.remove(new A(30, "4"));
+
+            System.out.println(tree);
+//            tree.forEach(n -> System.out.println(n.hashCode()));
+        }
+
+        {
+            int a = 10;
+            int b = a + 20;
+
+            new A(10, "Asd").a = 20;
+        }
+
+//        UnaryOperator<String> operator = (String::toUpperCase);
+//        UnaryOperator<String> sameOperator = ((String text) -> text.toUpperCase());
+//
+//        String text = "some text";
+//        UnaryOperator<String> basedOnText = (text::toUpperCase);
+
+
 
         printSectionEnding();
     }

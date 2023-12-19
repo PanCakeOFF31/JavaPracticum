@@ -14,7 +14,7 @@ public class FreePractise {
     public static void freePractise() {
         printArticle("freePractise");
 
-//        DeleteMeLater.deleteMeLater();
+        DeleteMeLater.deleteMeLater();
 
 //        Regex.regex();
 //        Regex.regexOracle();
