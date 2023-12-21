@@ -22,10 +22,19 @@ public class Chapter_21 {
 //        OptionalDouble
 //        program_4();
 
+//        Random
 //        program_5();
+
+//        Timer and TimerTask
 //        program_6();
+
+//        Currency
 //        program_7();
-//        program_8();
+
+//        Formatter
+        program_8();
+
+//        Scanner
 //        program_9();
 
         printArticleEnding();
@@ -167,6 +176,139 @@ public class Chapter_21 {
 
         System.out.println("optional.getAsDouble() = " + optional.getAsDouble());
         System.out.println("optional1.getAsDouble() = " + optional1.orElse(0.0));
+
+        printSectionEnding();
+    }
+
+    private static void program_5() {
+        printSection("Program_5. Random");
+
+        Logger.printMessage("next methods");
+        {
+            Random random = new Random();
+
+            System.out.println("random.nextBoolean() = " + random.nextBoolean());
+            System.out.println("random.nextInt() = " + random.nextInt());
+            System.out.println("random.nextLong() = " + random.nextLong());
+            System.out.println("random.nextFloat() = " + random.nextFloat());
+            System.out.println("random.nextDouble() = " + random.nextDouble());
+
+            byte[] bytes = new byte[10];
+            random.nextBytes(bytes);
+            System.out.println(Arrays.toString(bytes));
+        }
+
+        Logger.printMessage("");
+        {
+            Random random = new Random();
+
+            System.out.println(random.nextInt(100)); // [0;100)
+            System.out.println(random.nextInt(0, 100)); // [0;100)
+        }
+
+        Logger.printMessage("random streams");
+        {
+            Random random = new Random();
+
+            random.ints(5, -10, 10).forEach(System.out::println);
+        }
+        Logger.printMessage("random streams + collection");
+        {
+            List<Integer> ints = new ArrayList<>(new Random().ints(10, -100, 100).boxed().toList());
+            System.out.println("ints = " + ints);
+        }
+
+        Logger.printMessage("Gaus");
+
+        printSectionEnding();
+    }
+
+    private static void program_6() {
+        printSection("Program_6. Timer");
+
+        class MyTimer extends TimerTask {
+            @Override
+            public void run() {
+                System.out.println("Таймер отработал");
+            }
+        }
+
+        MyTimer task = new MyTimer();
+        Timer timer = new Timer();
+        timer.schedule(task, 0, 500);
+
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        timer.cancel();
+
+        printSectionEnding();
+    }
+
+    private static void program_7() {
+        printSection("Program_7. Currency");
+
+        System.out.println(Currency.getAvailableCurrencies().size());
+
+        Currency rubs = Currency.getInstance("RUB");
+        System.out.println("rubs = " + rubs);
+
+        Currency cads = Currency.getInstance(Locale.CANADA);
+        System.out.println("cads = " + cads);
+
+        Currency usds = Currency.getInstance("USD");
+        System.out.println("usds = " + usds);
+
+        Logger.printMessage("RUB");
+        {
+            System.out.println("rubs.getCurrencyCode() = " + rubs.getCurrencyCode());
+            System.out.println("rubs.getDisplayName() = " + rubs.getDisplayName());
+            System.out.println("rubs.getNumericCode() = " + rubs.getNumericCode());
+            System.out.println("rubs.getSymbol() = " + rubs.getSymbol());
+            System.out.println("rubs.getDefaultFractionDigits() = " + rubs.getDefaultFractionDigits());
+        }
+
+        Logger.printMessage("CAD");
+        {
+            System.out.println("cads.getCurrencyCode() = " + cads.getCurrencyCode());
+            System.out.println("cads.getDisplayName() = " + cads.getDisplayName());
+            System.out.println("cads.getNumericCode() = " + cads.getNumericCode());
+            System.out.println("cads.getSymbol() = " + cads.getSymbol());
+            System.out.println("cads.getDefaultFractionDigits() = " + cads.getDefaultFractionDigits());
+        }
+
+        Logger.printMessage("USD");
+        {
+            System.out.println("usds.getCurrencyCode() = " + usds.getCurrencyCode());
+            System.out.println("usds.getDisplayName() = " + usds.getDisplayName());
+            System.out.println("usds.getNumericCode() = " + usds.getNumericCode());
+            System.out.println("usds.getSymbol() = " + usds.getSymbol());
+            System.out.println("usds.getDefaultFractionDigits() = " + usds.getDefaultFractionDigits());
+        }
+        printSectionEnding();
+    }
+
+    private static void program_8() {
+        printSection("Program_8. Formatter");
+        
+        Logger.printMessage("");
+        {
+            StringBuilder builder = new StringBuilder(100);
+            Formatter formatter = new Formatter(builder);
+
+            formatter.format("maxim");
+            System.out.println("builder = " + builder);
+        }
+        
+        Logger.printMessage("");
+        {
+            Formatter formatter = new Formatter().format("%.5f", 10.0);
+            System.out.println("formatter = " + formatter);
+
+        }
 
         printSectionEnding();
     }

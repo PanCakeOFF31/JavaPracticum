@@ -1,0 +1,1 @@
+This abstract class is the superclass of all classes

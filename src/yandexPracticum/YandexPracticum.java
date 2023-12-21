@@ -2,6 +2,8 @@ package yandexPracticum;
 
 import yandexPracticum.javaCoreContinuation.JavaCoreContinuation;
 
+import static yandexPracticum.webinars.Webinars.webinars;
+
 public class YandexPracticum {
     public static void yandexPracticum() {
 
@@ -12,13 +14,13 @@ public class YandexPracticum {
 //        JavaIntroduction.javaIntroduction();
 
 //        Продолжение Java
-        JavaCoreContinuation.javaCoreContinuation();
+//        JavaCoreContinuation.javaCoreContinuation();
 
 //        Спринты
 //        sprints();
 
 //        Вебинары
-//        webinars();
+        webinars();
 
     }
 }

@@ -1,0 +1,1 @@
+Reads all bytes from this input stream and writes the bytes to the given output stream in the order that they are read.
