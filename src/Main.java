@@ -15,10 +15,10 @@ public class Main {
     public static void main(String[] args) {
 
 //          Shit Gerbert - исчерпывающее руководство по Java
-        GerbertShieldBook.gerbertShieldBook();
+//        GerbertShieldBook.gerbertShieldBook();
 
 ////        Обучающая платформа
-//        YandexPracticum.yandexPracticum();
+        YandexPracticum.yandexPracticum();
 //
 //         Свободно творческая часть
 //        FreePractise.freePractise();

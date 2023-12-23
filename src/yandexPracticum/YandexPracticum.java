@@ -14,13 +14,13 @@ public class YandexPracticum {
 //        JavaIntroduction.javaIntroduction();
 
 //        Продолжение Java
-//        JavaCoreContinuation.javaCoreContinuation();
+        JavaCoreContinuation.javaCoreContinuation();
 
 //        Спринты
 //        sprints();
 
 //        Вебинары
-        webinars();
+//        webinars();
 
     }
 }

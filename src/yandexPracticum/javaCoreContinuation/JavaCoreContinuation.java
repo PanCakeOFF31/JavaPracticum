@@ -5,6 +5,7 @@ import static yandexPracticum.javaCoreContinuation.theme_10.Theme_10.theme_10;
 import static yandexPracticum.javaCoreContinuation.theme_12.Theme_12.theme_12;
 import static yandexPracticum.javaCoreContinuation.theme_13.Theme_13.theme_13;
 import static yandexPracticum.javaCoreContinuation.theme_14.Theme_14.theme_14;
+import static yandexPracticum.javaCoreContinuation.theme_16.Theme_16.theme_16;
 import static yandexPracticum.javaCoreContinuation.theme_7_exceptions.Theme_7.theme_7;
 import static yandexPracticum.javaCoreContinuation.theme_9.Theme_9.theme_9;
 
@@ -47,7 +48,7 @@ public class JavaCoreContinuation {
 //        theme_12();
 
 //        Время и дата
-        theme_13();
+//        theme_13();
 
 //        Unit-тесты
 //        theme_14();
@@ -56,7 +57,7 @@ public class JavaCoreContinuation {
 //        theme_15();
 
 //        Internet, HTTP, JSON
-//        theme_16();
+        theme_16();
 
 //        Создание API
 //        theme_17();

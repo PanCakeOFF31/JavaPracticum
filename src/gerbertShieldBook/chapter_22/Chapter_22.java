@@ -48,18 +48,28 @@ public class Chapter_22 {
 //        program_11();
 
 //        InputStream, FilterInputStream, BufferedInputStream
-        program_12();
+//        program_12();
+
+//        InputStream, FilterInputStream, LineNumberInputStream
 //        program_13();
-//        program_14();
+
+//
+        program_14();
 //        program_15();
 //        program_16();
 //        program_17();
 //        program_18();
+
+//        Test
 //        program_19();
 
+
+//        Character Streams
+//        Reader. FileReader / Writer. FileWriter
 //        program_20();
 
-//        program_21();
+//        CharArrayReader/Writer
+        program_21();
 //        program_22();
 //        program_23();
 //        program_24();
@@ -507,13 +517,43 @@ public class Chapter_22 {
     private static void program_12() {
         printSection("Program_12. InputStream, FilterInputStream, BufferedInputStream");
 
+        File file1 = new File(base.toFile(), "program_12/file1.txt");
+        File file2 = new File(base.toFile(), "program_12/file2.txt");
 
+        try (BufferedInputStream input1 = new BufferedInputStream(new FileInputStream(file1));
+             BufferedOutputStream output1 = new BufferedOutputStream(new FileOutputStream(file2))) {
 
+            System.out.println("Доступное количество байт: " + input1.available());
+            System.out.println("Ставим метку на 2-ый байт");
+            input1.skip(10);
+            input1.mark(0);
+            System.out.println("Пропускаем первые 5 байт");
+            input1.skip(5);
+            System.out.println("Доступное количество байт: " + input1.available());
+            System.out.println("Выполняем reset");
+            input1.reset();
+            System.out.println("Доступное количество байт: " + input1.available());
+            System.out.println("Пропустим 11 байт, больше чем метка в 10 бай и ставим новую метку");
+            input1.skip(11);
+            System.out.println("Доступное количество байт: " + input1.available());
+            input1.mark(0);
+            input1.reset();
+            System.out.println("Доступное количество байт: " + input1.available());
+
+            output1.write(input1.readAllBytes());
+
+        } catch (
+                FileNotFoundException e) {
+            System.out.println("Файл не найден");
+        } catch (
+                IOException e) {
+            System.out.println("Проблемы в процессе");
+        }
         printSectionEnding();
     }
 
-    private static void program_20() {
-        printSection("Program_20. Test");
+    private static void program_19() {
+        printSection("Program_19. Test");
 
         File file1 = new File(base.toFile(), "program_20/file1.txt");
 
@@ -532,6 +572,89 @@ public class Chapter_22 {
                 IOException e) {
             System.out.println("Проблемы в процессе");
         }
+
+        printSectionEnding();
+    }
+
+    private static void program_13() {
+        printSection("Program_13. LineNumberInputStream is deprecated");
+
+
+        printSectionEnding();
+    }
+
+    private static void program_14() {
+        printSection("Program_14. FilterInput/OutputStream, DataInput/OutputStream");
+
+        File file1 = new File(base.toFile(), "program_14/file1.txt");
+        File file2 = new File(base.toFile(), "program_14/file2.txt");
+
+        try (DataInputStream input1 = new DataInputStream(new FileInputStream(file1));
+             DataOutputStream output1 = new DataOutputStream(new FileOutputStream(file2))) {
+
+//            output1.writeDouble(4412.55D);
+//            output1.writeInt(44);
+//            output1.writeLong(15L);
+
+        } catch (
+                FileNotFoundException e) {
+            System.out.println("Файл не найден");
+        } catch (
+                IOException e) {
+            System.out.println("Проблемы в процессе");
+        }
+
+        printSectionEnding();
+    }
+
+    private static void program_20() {
+        printSection("Program_20. Character Streams. Reader. Writer. ");
+
+        File file1 = new File(base.toFile(), "program_20/file1.txt");
+        File file2 = new File(base.toFile(), "program_20/file2.txt");
+        try (Reader reader = new FileReader(file1);
+             Writer writer = new FileWriter(file2)) {
+            char[] buffer = new char[30];
+            int amount = reader.read(buffer);
+
+            System.out.println("В файл записано это:");
+            for (int i = 0; i < amount; i++) {
+                System.out.print(buffer[i]);
+            }
+
+            System.out.println();
+
+            writer.write(buffer, 0, amount);
+        } catch (
+                FileNotFoundException e) {
+            System.out.println("Файл не найден");
+        } catch (
+                IOException e) {
+            System.out.println("Проблемы в процессе");
+        }
+
+        printSectionEnding();
+    }
+
+    private static void program_21() {
+        printSection("Program_21. Character Streams. CharArrayReader/Writer");
+
+        char[] chars = "Maxim, Максим, Ветer, Home".toCharArray();
+
+        try (CharArrayReader reader = new CharArrayReader(chars);
+             CharArrayWriter writer = new CharArrayWriter(100)) {
+
+            char[] buffer = new char[10];
+            while (reader.read(buffer) != -1) {
+                writer.write(buffer);
+                System.out.println(writer);
+            }
+
+        } catch (
+                IOException e) {
+            System.out.println("Проблемы в процессе");
+        }
+
 
         printSectionEnding();
     }
