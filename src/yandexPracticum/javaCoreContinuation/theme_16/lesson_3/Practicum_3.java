@@ -1,5 +1,6 @@
 package yandexPracticum.javaCoreContinuation.theme_16.lesson_3;
 
+import com.google.gson.Gson;
 import com.sun.net.httpserver.*;
 import helpers.coloredString.Logger;
 
@@ -8,11 +9,14 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.Optional;
 
 import static helpers.Helpers.printSection;
 import static helpers.Helpers.printSectionEnding;
 
 public class Practicum_3 {
+    private static int PORT = 8080;
     public static void main(String[] args) {
 //        MyServer
 //        program_1();
@@ -23,8 +27,10 @@ public class Practicum_3 {
 //            throw new RuntimeException(e);
 //        }
 
-        program_3();
-//        program_4();
+//        program_3();
+
+//        getResponseHeaders()
+        program_4();
 //        program_5();
 //        program_6();
 //        program_7();
@@ -34,6 +40,8 @@ public class Practicum_3 {
 
     public static void practicum_3() {
         printSection("Practicum_3");
+
+//        new ArrayList<Integer>().stream().
 
 
         printSectionEnding();
@@ -145,6 +153,45 @@ public class Practicum_3 {
 
             httpServer.start();
             System.out.println("HTTP-сервер запущен на " + 8080 + " порту!");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        printSectionEnding();
+    }
+
+    private static void program_4() {
+        printSection("Program_4. HttpExchange: getResponseHeaders()");
+        class HelloHandler implements HttpHandler {
+            @Override
+            public void handle(HttpExchange exchange) throws IOException {
+                Headers headers = exchange.getResponseHeaders();
+
+                headers.set("Content-type","text/plain");
+                headers.set("X-your-own-header", "any-information-you-want");
+                headers.set("X-your-own-header-2", "any-information-you-want-2");
+
+                exchange.sendResponseHeaders(200,0);
+
+                String response = "Не рады видеть вас на нашем сервере!";
+
+                try (OutputStream output = exchange.getResponseBody()) {
+                    output.write(response.getBytes());
+                }
+
+//                exchange.getRequestBody()
+                        new Gson().fromJson("ASd",HttpServer.class);
+
+            }
+        }
+
+        try {
+            HttpServer httpServer = HttpServer.create();
+            httpServer.bind(new InetSocketAddress(PORT), 0);
+            httpServer.createContext("/hello", new HelloHandler());
+
+            httpServer.start();
+            System.out.println("HTTP-сервер запущен на " + PORT + " порту!");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

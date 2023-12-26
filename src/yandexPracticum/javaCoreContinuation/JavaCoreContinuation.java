@@ -56,14 +56,14 @@ public class JavaCoreContinuation {
 //        Спринт №7
 //        theme_15();
 
-//        Internet, HTTP, JSON
+//        Internet, HTTP, JSON, API, HttpServer
         theme_16();
 
 //        Создание API
-//        theme_17();
+//        theme_17(); // В theme_16()
 
 //        Сетевые запросы
-//        theme_18();
+//        theme_18(); // в theme_16()
 
 //        Спринт №8
 //        theme_19();

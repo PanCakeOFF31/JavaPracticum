@@ -10,6 +10,8 @@ import javaRush.JavaRush;
 import tasks.Tasks;
 import yandexPracticum.YandexPracticum;
 
+import java.util.Arrays;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -18,7 +20,7 @@ public class Main {
 //        GerbertShieldBook.gerbertShieldBook();
 
 ////        Обучающая платформа
-        YandexPracticum.yandexPracticum();
+//        YandexPracticum.yandexPracticum();
 //
 //         Свободно творческая часть
 //        FreePractise.freePractise();
