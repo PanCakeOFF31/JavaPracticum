@@ -24,15 +24,19 @@ public enum Colors {
         return colorCode;
     }
 
+    public String getColorName() {
+        return colorName;
+    }
+
     public ColoredString getColoredString() {
-        return new ColoredString(colorName,this);
+        return new ColoredString(colorName, this);
     }
 
     public String[] getCodes() {
-        String[] codes = new String[Colors.values().length];
+        String[] codes = new String[helpers.coloredString.Colors.values().length];
 
         int counter = 0;
-        for (Colors value : Colors.values()) {
+        for (helpers.coloredString.Colors value : helpers.coloredString.Colors.values()) {
             codes[counter] = value.toString();
             counter++;
         }

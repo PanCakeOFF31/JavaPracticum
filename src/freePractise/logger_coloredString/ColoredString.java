@@ -7,17 +7,22 @@ public class ColoredString {
     private Colors color = null;
     private boolean[] options = null;
 
+
+    public static ColoredString of(String text, boolean... options) {
+        return new ColoredString(text, options);
+    }
+
     public static ColoredString of(String text, Colors color) {
         return new ColoredString(text, color);
     }
 
     public static ColoredString of(String text, Colors color, boolean... options) {
-        return new ColoredString(text, color,options);
+        return new ColoredString(text, color, options);
     }
 
     public ColoredString(String text, boolean... options) {
         if (text == null || options == null || options.length > 3)
-            throw new RuntimeException("ОЛО");
+            throw new IllegalArgumentException();
 
         this.color = Colors.NOT_COLOR;
         this.uncoloredText = text;
@@ -29,7 +34,7 @@ public class ColoredString {
 
     public ColoredString(String text, Colors color) {
         if (text == null || color == null)
-            throw new RuntimeException("ОЛО");
+            throw new IllegalArgumentException();
 
         this.color = color;
         this.uncoloredText = text;
@@ -62,27 +67,21 @@ public class ColoredString {
         initializeOptions();
     }
 
-    public ColoredString(ColoredString coloredString, Colors color) {
-        this(coloredString);
-
-        this.color = color;
-
-        initializeColor();
-        initializeOptions();
-    }
-
-    public void changeColor(Colors color) {
+    public ColoredString changeColor(Colors color) {
         coloredTextInference(color);
         initializeOptions();
+        return this;
     }
 
-    public void changeOptions(boolean[] options) {
+    public ColoredString changeOptions(boolean... options) {
         optionsInference(options);
+        return this;
     }
 
-    public void changeText(String text) {
+    public ColoredString changeText(String text) {
         this.uncoloredText = text;
         initializeColor();
+        return this;
     }
 
     public String getUncoloredText() {
@@ -153,7 +152,7 @@ public class ColoredString {
         initializeColor();
     }
 
-    private void optionsInference(boolean[] options) {
+    private void optionsInference(boolean... options) {
         this.options = options;
         initializeOptions();
     }

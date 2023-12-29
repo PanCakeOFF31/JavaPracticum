@@ -9,14 +9,15 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.Optional;
+import java.util.Comparator;
+import java.util.TreeMap;
 
 import static helpers.Helpers.printSection;
 import static helpers.Helpers.printSectionEnding;
 
 public class Practicum_3 {
     private static int PORT = 8080;
+
     public static void main(String[] args) {
 //        MyServer
 //        program_1();
@@ -30,9 +31,11 @@ public class Practicum_3 {
 //        program_3();
 
 //        getResponseHeaders()
-        program_4();
+//        program_4();
+
+
 //        program_5();
-//        program_6();
+        program_6();
 //        program_7();
 //        program_8();
 //        program_9();
@@ -167,11 +170,11 @@ public class Practicum_3 {
             public void handle(HttpExchange exchange) throws IOException {
                 Headers headers = exchange.getResponseHeaders();
 
-                headers.set("Content-type","text/plain");
+                headers.set("Content-type", "text/plain");
                 headers.set("X-your-own-header", "any-information-you-want");
                 headers.set("X-your-own-header-2", "any-information-you-want-2");
 
-                exchange.sendResponseHeaders(200,0);
+                exchange.sendResponseHeaders(200, 0);
 
                 String response = "Не рады видеть вас на нашем сервере!";
 
@@ -180,7 +183,7 @@ public class Practicum_3 {
                 }
 
 //                exchange.getRequestBody()
-                        new Gson().fromJson("ASd",HttpServer.class);
+                new Gson().fromJson("ASd", HttpServer.class);
 
             }
         }
@@ -199,4 +202,57 @@ public class Practicum_3 {
         printSectionEnding();
     }
 
+
+    private static void program_5() {
+        printSection("Program_5. Проверка, когда происходит обмен");
+
+        class RootHandler implements HttpHandler {
+            @Override
+            public void handle(HttpExchange exchange) throws IOException {
+                System.out.println("Был совершен запрос к серверу");
+                exchange.sendResponseHeaders(200, 0);
+//                exchange.getResponseBody().close();
+//                exchange.close();
+
+//                try (OutputStream output = exchange.getResponseBody()) {
+//                    output.write("Hello from java server!".getBytes());
+//                }
+            }
+        }
+
+        try {
+            InetSocketAddress address = new InetSocketAddress("localhost", 8080);
+            HttpServer server = HttpServer.create(address, 0);
+            HttpContext contextRoot = server.createContext("/", new RootHandler());
+
+            server.start();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        printSectionEnding();
+    }
+
+    private static void program_6() {
+        printSection("Program_6. ");
+
+        Task a = new Task();
+//        Comparator.comparing(
+//        Comparator<Task> tsak = Comparator.nullsFirst(Comparator.naturalOrder()).thenComparing(Comparator.comparing(Task::getTaskTime));
+//
+//        Comparator.comparing(Task::getTaskTime);
+//        TreeMap<Task,String> map = new TreeMap<>();
+//        map.put(new Task(),"asd");
+
+        printSectionEnding();
+    }
+
+
+
+}
+
+class Task {
+    public Integer getTaskTime() {
+        return 0;
+    }
 }

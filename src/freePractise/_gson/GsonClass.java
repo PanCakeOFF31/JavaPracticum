@@ -1,11 +1,14 @@
 package freePractise._gson;
 
 import com.google.gson.*;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import helpers.coloredString.ColoredString;
 import helpers.coloredString.Colors;
 import helpers.coloredString.Logger;
 
-import java.util.Arrays;
+import java.io.IOException;
+import java.util.*;
 
 import static helpers.Helpers.printSection;
 import static helpers.Helpers.printSectionEnding;
@@ -27,9 +30,15 @@ public class GsonClass {
 //        program_6();
 //        JsonObject
 //        program_7();
-//        TypeAdapter
-        program_8();
+//        GSONs
+//        program_8();
+//        Collection to JSON
 //        program_9();
+//        Map to JSON
+//        program_10();
+//        TypeAdapter
+        program_11();
+        program_12();
     }
 
 
@@ -227,7 +236,6 @@ public class GsonClass {
 
         Boolean b = null;
         jsonArray.add(b);
-
         System.out.println("jsonArray = " + jsonArray);
 
         Object[] objArr = new Gson().fromJson(jsonArray, Object[].class);
@@ -281,7 +289,7 @@ public class GsonClass {
     }
 
     private static void program_8() {
-        printSection("Program_8. TypeAdapter<T>");
+        printSection("Program_8. ");
 
         Gson gson = new GsonBuilder().setPrettyPrinting().serializeNulls().create();
 
@@ -316,20 +324,172 @@ public class GsonClass {
 
         printSectionEnding();
     }
-}
 
-class Weapon {
-    String title;
-    int length;
-    double power;
-    String options;
+    private static void program_9() {
+        printSection("Program_9. Collection in JSON");
 
-    private Weapon() {
-        System.out.println("Был вызван приватный конструктор");
-        length = 35;
+        Logger.printMessage("List to JSON");
+        {
+            List<Integer> list = new ArrayList<>();
+            list.add(10);
+            list.add(100);
+            list.add(1000);
+
+            System.out.println(list);
+
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+            String jsonList = gson.toJson(list);
+            System.out.println(jsonList);
+        }
+
+        Logger.printMessage("From JSON to List");
+        {
+            String origin = "[10,20,30]";
+            Gson gson = new Gson();
+
+//            List<Integer> list = gson.<List<Integer>>fromJson(origin,List.class);
+            List<Integer> list = new ArrayList<>(Arrays.asList(gson.fromJson(origin, Integer[].class)));
+            System.out.println(list);
+            System.out.println(list.getClass());
+        }
+
+        printSectionEnding();
     }
 
-    public static Weapon of() {
-        return new Weapon();
+    private static void program_10() {
+        printSection("Program_10. Map to JSON");
+
+        Map<Integer, String> map = new HashMap<>();
+        Map<Integer, String> buffer = new HashMap<>();
+
+        map.put(10, "Viktor");
+        map.put(20, "Maximum");
+        map.put(30, "Sunlight");
+
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+        String jsonMap = gson.toJson(map);
+        System.out.println(jsonMap);
+
+        Map<Integer, String> mapFromJson = gson.<Map<Integer, String>>fromJson(jsonMap, Map.class);
+        System.out.println(mapFromJson);
+        System.out.println(mapFromJson.getClass());
+
+        JsonObject jsonObject = JsonParser.parseString(jsonMap).getAsJsonObject();
+
+        for (Map.Entry<String, JsonElement> entry : jsonObject.entrySet()) {
+            buffer.put(Integer.parseInt(entry.getKey()), entry.getValue().getAsString());
+        }
+
+        System.out.println(buffer);
+
+        printSectionEnding();
+    }
+
+    private static void program_11() {
+        printSection("Program_11. TypeAdapter");
+//        Регулирует правила, по которым определенный тип данных будет конвертироваться в JSON строку
+
+        class PointAdapter extends TypeAdapter<Point> {
+            @Override
+            public void write(JsonWriter jsonWriter, Point point) throws IOException {
+                if (point == null) {
+                    jsonWriter.nullValue();
+                    return;
+                }
+
+                String json = "|" + point.x + ", " + point.y + "|";
+                jsonWriter.value(json);
+            }
+
+            @Override
+            public Point read(JsonReader jsonReader) throws IOException, NumberFormatException {
+                String temp = jsonReader.nextString();
+                System.out.println("temp = " + temp);
+                String[] point = temp.split(",");
+
+                int x = Integer.parseInt(point[0].substring(1));
+                int y = Integer.parseInt(point[1].substring(0, point[1].length() - 1));
+
+                Point pointTemp = new Point();
+                pointTemp.x = x;
+                pointTemp.y = y;
+
+                return pointTemp;
+            }
+        }
+
+        Gson gson = new GsonBuilder()
+                .setPrettyPrinting()
+                .registerTypeAdapter(Point.class, new PointAdapter())
+                .create();
+
+        System.out.println(gson.toJson(new Point()));
+        System.out.println(gson.toJson(new A()));
+
+        System.out.println(gson.fromJson("\"|15,44|\"", Point.class));
+//        System.out.println(gson.fromJson("{\"field\": \"[10, 14]\"}",A.class));
+//        System.out.println(gson.fromJson(temp,A.class));
+
+        printSectionEnding();
+    }
+
+    private static void program_12() {
+        printSection("Program_12. TypeAdapter");
+        class PointAdapter extends TypeAdapter<Point> {
+            @Override
+            public void write(JsonWriter jsonWriter, Point point) throws IOException {
+                if (point == null) {
+                    jsonWriter.nullValue();
+                    return;
+                }
+
+                JsonArray jsonArray = new JsonArray(2);
+                jsonArray.add(point.x);
+                jsonArray.add(point.y);
+                System.out.println("write(): " + jsonArray.toString());
+                jsonWriter.value(jsonArray.toString());
+            }
+
+            @Override
+            public Point read(JsonReader jsonReader) throws IOException {
+                String temp = jsonReader.nextString();
+
+                JsonArray jsonArray = JsonParser.parseString(temp).getAsJsonArray();
+
+                Point pointTemp = new Point();
+                pointTemp.x = jsonArray.get(0).getAsInt();
+                pointTemp.y = jsonArray.get(1).getAsInt();
+
+                return pointTemp;
+            }
+        }
+
+        Gson gson = new GsonBuilder()
+                .setPrettyPrinting()
+                .registerTypeAdapter(Point.class, new PointAdapter())
+                .create();
+
+        System.out.println(gson.toJson(new Point()));
+        System.out.println(gson.toJson(new A()));
+
+        System.out.println(gson.fromJson("\"[15,44]\"", Point.class));
+
+        printSectionEnding();
+    }
+
+    static class Point {
+        int x = 10;
+        int y = 10;
+
+        @Override
+        public String toString() {
+            return "x=" + x + ",y=" + y;
+        }
+    }
+
+    static class A {
+        Point field = new Point();
     }
 }
