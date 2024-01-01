@@ -1,5 +1,8 @@
 package freePractise.deleteMeLater;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 
@@ -8,11 +11,9 @@ import java.io.OutputStream;
 
 public class DeleteMeLater {
     public static void main(String[] args) {
-//        A a = new A(10);
-//        System.out.println("a = " + a);
-//        A copy = foo(a::getMyCopy);
-//        System.out.println("copy = " + copy);
-
+        JsonElement jsonElement = JsonParser.parseString("\"any text hello\"");
+        System.out.println("jsonElement = " + jsonElement);
+        System.out.println(new Gson().toJson("any text"));
     }
 
 

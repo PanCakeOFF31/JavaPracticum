@@ -1,4 +1,4 @@
-package freePractise._gson;
+package freePractise.gson;
 
 import com.google.gson.*;
 import com.google.gson.stream.JsonReader;

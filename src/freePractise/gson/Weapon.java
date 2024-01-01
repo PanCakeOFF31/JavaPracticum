@@ -1,4 +1,4 @@
-package freePractise._gson;
+package freePractise.gson;
 
 public class Weapon {
     String title;
