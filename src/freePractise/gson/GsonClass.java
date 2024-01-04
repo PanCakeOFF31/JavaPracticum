@@ -1,6 +1,7 @@
 package freePractise.gson;
 
 import com.google.gson.*;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import helpers.coloredString.ColoredString;
@@ -8,6 +9,7 @@ import helpers.coloredString.Colors;
 import helpers.coloredString.Logger;
 
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.util.*;
 
 import static helpers.Helpers.printSection;
@@ -37,8 +39,10 @@ public class GsonClass {
 //        Map to JSON
 //        program_10();
 //        TypeAdapter
-        program_11();
-        program_12();
+//        program_11();
+//        program_12();
+//        Deserializing list
+        program_13();
     }
 
 
@@ -390,7 +394,6 @@ public class GsonClass {
     private static void program_11() {
         printSection("Program_11. TypeAdapter");
 //        Регулирует правила, по которым определенный тип данных будет конвертироваться в JSON строку
-
         class PointAdapter extends TypeAdapter<Point> {
             @Override
             public void write(JsonWriter jsonWriter, Point point) throws IOException {
@@ -491,5 +494,38 @@ public class GsonClass {
 
     static class A {
         Point field = new Point();
+    }
+
+    private static void program_13() {
+        printSection("Program_13. Deserializing list");
+
+        List<Integer> ints = new ArrayList<>(List.of(10, 20, 30));
+
+        Gson gson = new Gson();
+        String jsonList = gson.toJson(ints);
+        System.out.println("jsonList = " + jsonList);
+
+//        gson.fromJson(jsonList,List<Integer>.class);
+
+        Logger.printMessage("incorrect way to do deserialization");
+        {
+            List list = gson.fromJson(jsonList, ArrayList.class);
+            System.out.println(list);
+        }
+
+        Logger.printMessage("the correct way to deserialize");
+        {
+            Type listOfIntegerFromJson = new TypeToken<ArrayList<Integer>>() {
+            }.getType();
+            List<Integer> list = gson.fromJson(jsonList, listOfIntegerFromJson);
+            System.out.println("list = " + list);
+        }
+
+        Logger.printMessage("RuntimeTypeAdapterFactory");
+        {
+
+        }
+
+        printSectionEnding();
     }
 }

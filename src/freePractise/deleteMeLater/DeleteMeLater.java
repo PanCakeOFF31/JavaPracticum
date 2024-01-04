@@ -1,21 +1,28 @@
 package freePractise.deleteMeLater;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
-import com.sun.net.httpserver.HttpExchange;
-import com.sun.net.httpserver.HttpHandler;
-
-import java.io.IOException;
-import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class DeleteMeLater {
     public static void main(String[] args) {
-        JsonElement jsonElement = JsonParser.parseString("\"any text hello\"");
-        System.out.println("jsonElement = " + jsonElement);
-        System.out.println(new Gson().toJson("any text"));
-    }
+//        JsonElement jsonElement = JsonParser.parseString("\"any text hello\"");
+//        System.out.println("jsonElement = " + jsonElement);
+//        System.out.println(new Gson().toJson("any text"));
 
+        List<Integer> ints = new ArrayList<>(List.of(10, 20, 30));
+        System.out.println(ints);
+
+        Iterator<Integer> iterator = ints.iterator();
+
+        while(iterator.hasNext()) {
+            Integer number = iterator.next();
+            if (number == 20)
+                ints.remove(number);
+        }
+
+        System.out.println(ints);
+    }
 
 
     public static void deleteMeLater() {

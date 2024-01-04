@@ -1,9 +1,9 @@
-package freePractise._junit;
+package freePractise.JUunit5;
 
 import helpers.coloredString.Logger;
 import org.junit.jupiter.api.*;
 
-public class ArbitraryTest {
+public class LifecycleMethodsTest {
     @BeforeEach
     @DisplayName("The before each annotated method №2")
     void beforeEach2() {
@@ -18,7 +18,7 @@ public class ArbitraryTest {
 
     @BeforeEach
     @DisplayName("The before each annotated method №3")
-    @Disabled
+    @Disabled // На него не действует эта аннотация
     void beforeEach3() {
         Logger.printMessage("Выполнился метод beforeEach3");
     }
@@ -29,9 +29,18 @@ public class ArbitraryTest {
         Assertions.assertTrue(true);
     }
     @Test
-    @Disabled
+    @Disabled("Деактивированный тест, с указанием причины")
     void T0002_PS00_emptyTest() {
         Assumptions.assumeTrue(false);
         Assertions.assertTrue(true);
+    }
+
+    @Test
+    void T0001_PS00_(){
+        Assertions.assertAll(
+                () -> Assertions.assertEquals(1,1),
+                () -> Assertions.assertEquals(1,1),
+                () -> Assertions.assertEquals(1,1)
+        );
     }
 }

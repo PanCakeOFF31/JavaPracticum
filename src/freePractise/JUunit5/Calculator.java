@@ -1,4 +1,4 @@
-package freePractise._junit;
+package freePractise.JUunit5;
 
 public class Calculator {
     public int summation(int x, int y) {

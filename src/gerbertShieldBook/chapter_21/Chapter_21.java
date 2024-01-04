@@ -2,6 +2,10 @@ package gerbertShieldBook.chapter_21;
 
 import helpers.coloredString.Logger;
 
+import java.text.Normalizer;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.*;
 
 import static helpers.Helpers.*;
@@ -32,10 +36,18 @@ public class Chapter_21 {
 //        program_7();
 
 //        Formatter
-        program_8();
-
-//        Scanner
+//        program_8();
 //        program_9();
+//        program_10();
+//        program_11();
+//        Formatting dates
+//        program_12();
+//        Formatting time
+//        program_13();
+//        Escape sequence
+//        program_14();
+//        Minimum field width
+        program_15();
 
         printArticleEnding();
     }
@@ -292,8 +304,8 @@ public class Chapter_21 {
     }
 
     private static void program_8() {
-        printSection("Program_8. Formatter");
-        
+        printSection("Program_8. Formatter: simple basics");
+
         Logger.printMessage("");
         {
             StringBuilder builder = new StringBuilder(100);
@@ -301,13 +313,149 @@ public class Chapter_21 {
 
             formatter.format("maxim");
             System.out.println("builder = " + builder);
+            System.out.println(formatter.out());
+
+            formatter.flush();
+            System.out.println(formatter.out());
         }
-        
+
         Logger.printMessage("");
         {
             Formatter formatter = new Formatter().format("%.5f", 10.0);
             System.out.println("formatter = " + formatter);
 
+            formatter.flush();
+            System.out.println(formatter);
+            System.out.println(formatter.out());
+        }
+
+        printSectionEnding();
+    }
+
+    private static void program_9() {
+        printSection("Program_9. Formatter: numeric conversion specifiers");
+
+        Formatter formatter;
+
+        Logger.printMessage("Numeric (integral) conversion specifiers");
+        {
+            formatter = new Formatter();
+            formatter.format("Decimal integer: %d, Octal integer: 0%o, Hexadecimal integer: 0x%x", 13, 011, 0xff);
+            System.out.println(formatter);
+        }
+
+        Logger.printMessage("Numeric (floating-point) conversion specifiers");
+        {
+            formatter = new Formatter();
+            formatter.format("Decimal number: %f, Decimal number in CSN: %e", 10.555, 10.555);
+            System.out.println(formatter);
+        }
+
+        printSectionEnding();
+    }
+
+    private static void program_10() {
+        printSection("Program_10. Formatting strings and characters");
+
+        Formatter formatter;
+
+        {
+            formatter = new Formatter();
+            formatter.format("%s and %S: %c, %C, %%", "Max", "PanCakeOFF", 'a', 'a');
+            System.out.println(formatter);
+        }
+
+        printSectionEnding();
+    }
+
+    private static void program_11() {
+        printSection("Program_11. Formatting Numbers");
+
+        Formatter formatter;
+
+        {
+            for (double i = 1.23; i <= 1.23E+12; i *= 10) {
+                formatter = new Formatter();
+                formatter.format("%%f = %f, %%e = %e, %%g = %g, %%a = %a", i, i, i, i);
+                System.out.println(formatter);
+            }
+        }
+
+        printSectionEnding();
+    }
+
+    private static void program_12() {
+        printSection("Program_12. Formatting dates");
+
+        Formatter formatter;
+        LocalDate date = LocalDate.of(2015, 5, 11);
+
+        {
+            formatter = new Formatter();
+            formatter.format("day - %td, month - %tm, year - %ty", date, date, date);
+            System.out.println(formatter);
+        }
+
+        {
+            formatter = new Formatter();
+            formatter.format("day - %tD, month - %tm, year - %tY", date, date, date);
+            System.out.println(formatter);
+        }
+
+        {
+            formatter = new Formatter();
+            formatter.format("day - %te, month - %tm, year - %tY, day of week - %tA", date, date, date, date);
+            System.out.println(formatter);
+        }
+
+
+        printSectionEnding();
+    }
+
+    private static void program_13() {
+        printSection("Program_13. Formatting time");
+
+        Formatter formatter;
+        LocalTime time = LocalTime.of(17, 30, 45);
+
+        Logger.printMessage(time.toString());
+
+        {
+            formatter = new Formatter();
+            formatter.format("Hour of day - %tH, Minute within the hour - %tM, Seconds within the minute - %tS", time, time, time);
+            System.out.println(formatter);
+        }
+        {
+            formatter = new Formatter();
+            formatter.format("%tT", time);
+            System.out.println(formatter);
+        }
+        {
+            formatter = new Formatter();
+            formatter.format("%tr", time);
+            System.out.println(formatter);
+        }
+
+        printSectionEnding();
+    }
+
+    private static void program_14() {
+        printSection("Program_14. Escape sequence");
+
+        Formatter formatter = new Formatter();
+        formatter.format("%% is %% and %%n%n is...");
+        System.out.println(formatter);
+
+        printSectionEnding();
+    }
+
+    private static void program_15() {
+        printSection("Program_15. Minimum width");
+
+        for (int i = 10; i < 100; i += 10) {
+            Formatter formatter = new Formatter();
+            formatter.format("%10g, %10d", (double) i, i);
+            System.out.println(formatter);
         }
 
         printSectionEnding();

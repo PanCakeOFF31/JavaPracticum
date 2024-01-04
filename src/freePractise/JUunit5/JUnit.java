@@ -1,4 +1,4 @@
-package freePractise._junit;
+package freePractise.JUunit5;
 
 import static helpers.Helpers.*;
 
