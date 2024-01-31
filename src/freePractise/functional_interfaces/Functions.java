@@ -67,6 +67,7 @@ public class Functions {
     private static void program_1() {
         printSection("Program_1. Function<T,R>");
 //        Представляет собой функцию, которая принимает один аргумент - T и предоставляет результат - R
+//        Function<Integer, Double> function = Double::valueOf;
         Function<Integer, Double> function = Double::valueOf;
 
         Logger.printMessage("R apply(T t)");

@@ -53,6 +53,8 @@ public class ComparatorClass {
         tempList.sort(reverseIntegerList);
         System.out.println("tempList = " + tempList);
 
+        tempList.sort(Comparator.comparing(MyClass::getValue));
+
         printSectionEnding();
     }
 
@@ -89,7 +91,6 @@ public class ComparatorClass {
         Collections.shuffle(list);
         list.sort(lambdaSort);
         System.out.println("list = " + list);
-
 
         printSectionEnding();
     }

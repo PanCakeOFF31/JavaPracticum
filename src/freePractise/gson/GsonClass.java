@@ -42,7 +42,8 @@ public class GsonClass {
 //        program_11();
 //        program_12();
 //        Deserializing list
-        program_13();
+//        program_13();
+        program_14();
     }
 
 
@@ -525,6 +526,17 @@ public class GsonClass {
         {
 
         }
+
+        printSectionEnding();
+    }
+
+    private static void program_14() {
+        printSection("Program_14. String");
+
+        System.out.println(new Gson().toJson("max im"));
+        System.out.println(new Gson().fromJson("\"max im\"", String.class));
+//        System.out.println(new Gson().fromJson("max im", String.class));
+//        System.out.println(JsonParser.parseString("max imk asd"));
 
         printSectionEnding();
     }

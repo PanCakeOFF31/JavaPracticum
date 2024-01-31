@@ -1,8 +1,14 @@
 package freePractise.deleteMeLater;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
+import java.util.function.Function;
+import java.util.function.UnaryOperator;
+
+import static helpers.Helpers.printSection;
+import static helpers.Helpers.printSectionEnding;
 
 public class DeleteMeLater {
     public static void main(String[] args) {
@@ -10,23 +16,92 @@ public class DeleteMeLater {
 //        System.out.println("jsonElement = " + jsonElement);
 //        System.out.println(new Gson().toJson("any text"));
 
-        List<Integer> ints = new ArrayList<>(List.of(10, 20, 30));
-        System.out.println(ints);
+//        List<Integer> ints = new ArrayList<>(List.of(10, 20, 30));
+//        System.out.println(ints);
+//
+//        Iterator<Integer> iterator = ints.iterator();
+//
+//        while (iterator.hasNext()) {
+//            Integer number = iterator.next();
+//            if (number == 20)
+//                ints.remove(number);
+//        }
+//
+//        String title = " asdasd";
+//
+//        for (int i = 0, y = 10; i < 10; i++) {
+//            System.out.println(i + " " + y);
+//        }
+//
+//        System.out.println(ints);
+//
+//        System.out.println("🤡");
+//        new Temp("asd");
+//
+//        try {
+//            return;
+//        } catch (Exception e) {
+//
+//        } finally {
+//            System.out.println("🤡");
+//            return;
+//        }
 
-        Iterator<Integer> iterator = ints.iterator();
 
-        while(iterator.hasNext()) {
-            Integer number = iterator.next();
-            if (number == 20)
-                ints.remove(number);
-        }
 
-        System.out.println(ints);
     }
 
+    private static class Temp {
+        private String name;
+
+        {
+            name = "asd";
+            System.out.println("Раньше конструктора");
+        }
+
+        public Temp(String name) {
+            System.out.println("Конструктор после блока иниициализации");
+            this.name = name;
+        }
+    }
+
+    private static void foo(UnaryOperator<String> operator, String text) {
+        System.out.println(operator.apply(text));
+    }
+
+    private static class MyClass {
+        private final String INNER;
+
+        public MyClass(String INNER) {
+            this.INNER = INNER;
+        }
+
+        static String foo1(String text) {
+            return text.toUpperCase();
+        }
+
+        String foo2(String text) {
+            return text.toUpperCase() + this.INNER;
+        }
+    }
 
     public static void deleteMeLater() {
-//        printSection("DeleteMeLater:");
+        printSection("DeleteMeLater:");
+
+        MyClass instance1 = new MyClass("+++++++");
+        MyClass instance2 = new MyClass("-------");
+
+        String originalText = "original text";
+
+        foo(str -> str.toUpperCase(), originalText);
+
+        foo(MyClass::foo1, originalText);
+
+        foo(instance1::foo2, originalText);
+        foo(instance2::foo2, originalText);
+
+        foo(String::trim, originalText);
+
 //
 //        {
 //            class A implements Comparable<A> {
@@ -115,8 +190,9 @@ public class DeleteMeLater {
 //
 ////        String str = String.valueOf(10);
 //
-//        printSectionEnding();
+        printSectionEnding();
     }
+
 }
 
 interface Cloneable<T> {

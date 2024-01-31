@@ -2,9 +2,7 @@ package gerbertShieldBook.chapter_21;
 
 import helpers.coloredString.Logger;
 
-import java.text.Normalizer;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.*;
 
@@ -47,7 +45,13 @@ public class Chapter_21 {
 //        Escape sequence
 //        program_14();
 //        Minimum field width
-        program_15();
+//        program_15();
+//        Specifying precision
+//        program_16();
+//        Formatting flags
+//        program_17();
+//        Argument index
+        program_18();
 
         printArticleEnding();
     }
@@ -452,14 +456,149 @@ public class Chapter_21 {
     private static void program_15() {
         printSection("Program_15. Minimum width");
 
+        Logger.printMessage("Выравнивание по правому краю");
         for (int i = 10; i < 100; i += 10) {
             Formatter formatter = new Formatter();
             formatter.format("%10g, %10d", (double) i, i);
             System.out.println(formatter);
         }
 
+        Logger.printMessage("Выравнивание по правому краю");
+        for (int i = 10; i < 100; i += 10) {
+            Formatter formatter = new Formatter();
+            formatter.format("%10e, %10d, %10g", (double) i, i, (double) i);
+            System.out.println(formatter);
+        }
+
+        Logger.printMessage("Выравнивание по левому краю");
+        for (int i = 10; i < 100; i += 10) {
+            Formatter formatter = new Formatter();
+            formatter.format("%-10e | %-10d | %-10g", (double) i, i, (double) i);
+            System.out.println(formatter);
+        }
+
+        Logger.printMessage("Некорректное выравнивание");
+        System.out.printf("%10f, %10d %n", 10.0, 15);
+        System.out.printf("%10f, %10d %n", 100000000.0, 15);
+
         printSectionEnding();
     }
+
+    private static void program_16() {
+        printSection("Program_16. Specifying precision");
+        Formatter formatter;
+
+        Logger.printMessage("precision with %f");
+        {
+            formatter = new Formatter();
+            formatter.format("%10.3f", 1234.5676123123);
+            System.out.println(formatter);
+        }
+
+        Logger.printMessage("precision with %e");
+        {
+            formatter = new Formatter();
+            formatter.format("%10.3e", 1234.5676123123);
+            System.out.println(formatter);
+        }
+
+        Logger.printMessage("precision with %g");
+        {
+            formatter = new Formatter();
+            formatter.format("%10.3g", 1234.5676123123);
+            System.out.println(formatter);
+        }
+
+        Logger.printMessage("Precision with string specifier");
+        {
+            formatter = new Formatter();
+            formatter.format("%.10s", "any text, some text");
+            System.out.println(formatter);
+        }
+
+        printSectionEnding();
+    }
+
+    private static void program_17() {
+        printSection("Program_17. Formatting flags");
+
+        Formatter formatter;
+
+        Logger.printMessage("\"-\" - The result will be left-justified");
+        {
+            formatter = new Formatter();
+            formatter.format("| %20.20s | %20.20s |%n", "any text", "arbitrary text");
+            formatter.format("| %-20.20s | %-20.20s |", "any text", "arbitrary text");
+            System.out.println(formatter);
+        }
+
+        Logger.printMessage("\"+\" - The result will always include a sign");
+        {
+            formatter = new Formatter();
+            formatter.format("| %+-20.3e |%n| %+-20.3e |", 1234.5676123123, -93.5435);
+            System.out.println(formatter);
+        }
+
+        Logger.printMessage("\" \" - The result will include a leading space for positive values");
+        {
+            formatter = new Formatter();
+            formatter.format("| % -20.3e |%n| % -20.3e |", 1234.5676123123, -93.5435);
+            System.out.println(formatter);
+        }
+
+
+        Logger.printMessage("\",\" - The result will include locale-specific grouping separators");
+        {
+            formatter = new Formatter();
+            formatter.format("%,+-20.1f, %,.1f", 1234.5676123123, -0.005435);
+            System.out.println(formatter);
+        }
+
+        Logger.printMessage("\"#\" - The result should use a conversion-dependent alternate form");
+        {
+            formatter = new Formatter();
+            formatter.format("%,# -20f, %#.1f%n", 1234.5676123123, 15D);
+            formatter.format("%d, %#o, %#x", 100, 100, 100);
+            System.out.println(formatter);
+        }
+
+        Logger.printMessage("\"(\" - The result will enclose negative numbers in parentheses");
+        {
+            formatter = new Formatter();
+            formatter.format("%(, -20.6f, %-(20.10f", 1234.5676123123, -0.005435);
+            System.out.println(formatter);
+        }
+
+
+        printSectionEnding();
+    }
+
+    private static void program_18() {
+        printSection("Program_18. Argument index");
+
+        Formatter formatter;
+
+        Logger.printMessage("Пере использование того же аргумента");
+        {
+            formatter = new Formatter();
+            formatter.format("|| %1$20d || %<20d ||", 100);
+            System.out.println(formatter);
+        }
+
+        Logger.printMessage("Пере использование времени");
+        {
+            formatter = new Formatter();
+            LocalTime time = LocalTime.of(15, 30, 45);
+            formatter.format("%1$tH:%<tM:%<tS%n", time);
+            formatter.format("%tT", time);
+            System.out.println(formatter);
+        }
+
+        Logger.printMessage("");
+
+        printSectionEnding();
+    }
+
 }
 
 

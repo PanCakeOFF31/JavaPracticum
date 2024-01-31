@@ -9,4 +9,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="lib" level="project" />
   </component>
+  <component name="SonarLintModuleSettings">
+    <option name="uniqueId" value="b9cd3ffc-4a35-4635-9ba8-ca623f7fbc3a" />
+  </component>
 </module>

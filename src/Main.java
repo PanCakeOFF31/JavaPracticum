@@ -7,17 +7,19 @@
 import freePractise.FreePractise;
 import gerbertShieldBook.GerbertShieldBook;
 import javaRush.JavaRush;
+import lombok.Getter;
 import tasks.Tasks;
 import yandexPracticum.YandexPracticum;
 
 import java.util.Arrays;
+import java.util.Comparator;
 
 public class Main {
 
     public static void main(String[] args) {
 
 //          Shit Gerbert - исчерпывающее руководство по Java
-        GerbertShieldBook.gerbertShieldBook();
+//        GerbertShieldBook.gerbertShieldBook();
 
 ////        Обучающая платформа
 //        YandexPracticum.yandexPracticum();

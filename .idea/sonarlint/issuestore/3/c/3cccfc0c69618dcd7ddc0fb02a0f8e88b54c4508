@@ -1,0 +1,15 @@
+
+'
+java:S1700…"Rename field "a"(®š‹á
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¶„‚Ø
+T
+java:S1854"9Remove this useless assignment to local variable "title".(Ýñùªÿÿÿÿÿ
+V	java:S125	"<This block of commented-out lines of code should be removed.(Œûºâúÿÿÿÿ
+@	java:S106"+Replace this use of System.out by a logger.(ãÉÞü
+E
+java:S1481"*Remove this unused "title" local variable.(Ýñùªÿÿÿÿÿ
+@	java:S106"+Replace this use of System.out by a logger.(·íáƒ
+@	java:S106"+Replace this use of System.out by a logger.(ãÉÞü
+V	java:S125#"<This block of commented-out lines of code should be removed.(ˆæÂ¿úÿÿÿÿ
+F	java:S106’"+Replace this use of System.out by a logger.(û‡”¢üÿÿÿÿ
+W	java:S125—"<This block of commented-out lines of code should be removed.(å ëØýÿÿÿÿ

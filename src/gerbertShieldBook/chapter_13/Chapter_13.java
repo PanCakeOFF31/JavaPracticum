@@ -1,7 +1,7 @@
 package gerbertShieldBook.chapter_13;
 
 import gerbertShieldBook.chapter_13.auxiliaryClasses.*;
-import java.util.function.Function;
+
 import java.util.function.UnaryOperator;
 
 import static helpers.Helpers.*;
@@ -249,6 +249,9 @@ public class Chapter_13 {
 
         modified = stringModifying(stringModifier::toLowerCase, originalString);
         System.out.println("modified = " + modified);
+
+//        Такой вариант тоже подходит
+//        stringModifying(Chapter_13::toUpperCase, originalString);
 
         printSectionEnding();
     }

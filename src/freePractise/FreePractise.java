@@ -1,7 +1,7 @@
 package freePractise;
 
 
-import freePractise.__IO.IOStreams;
+import freePractise.__sofware_design_patterns.DesignPattern;
 import freePractise.deleteMeLater.DeleteMeLater;
 
 import static helpers.Helpers.printArticle;
@@ -59,6 +59,8 @@ public class FreePractise {
 
 //        Functions.functions();
 
+//        Patterns
+        DesignPattern.patternClass();
 
         printArticleEnding();
     }
