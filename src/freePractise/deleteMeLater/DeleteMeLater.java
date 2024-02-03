@@ -1,10 +1,5 @@
 package freePractise.deleteMeLater;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.List;
-import java.util.function.Function;
 import java.util.function.UnaryOperator;
 
 import static helpers.Helpers.printSection;
@@ -47,8 +42,26 @@ public class DeleteMeLater {
 //            return;
 //        }
 
+        A obj = new C();
+        obj.info();
+    }
 
+    private static abstract class A {
+        public void info() {
+            System.out.println("Инфа из абстрактного классе A");
+        }
+    }
 
+    private static abstract class B extends A {
+        @Override
+        public abstract void info();
+    }
+
+    private static class C extends B {
+        @Override
+        public void info() {
+            System.out.println("Реализация в классе C");
+        }
     }
 
     private static class Temp {
