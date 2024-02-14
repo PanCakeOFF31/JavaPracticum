@@ -4,6 +4,7 @@
     <excludeFromCompile>
       <directory url="file://$PROJECT_DIR$/src/yandexPracticum/folderTemplate" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/src/yandexPracticum/sectionTemplate" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/src/headFirst/chapter_12_composite" includeSubdirectories="true" />
     </excludeFromCompile>
     <annotationProcessing>
       <profile default="true" name="Default" enabled="true" />

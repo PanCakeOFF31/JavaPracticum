@@ -1,19 +1,0 @@
-
-o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(±‡û
-U
-java:S1118":Add a private constructor to hide the implicit public one.(«›Æ¯üÿÿÿÿ
-V	java:S125"<This block of commented-out lines of code should be removed.(®¿Üˆüÿÿÿÿ
-Q	java:S125"<This block of commented-out lines of code should be removed.(ıÅ¾
-Q	java:S125"<This block of commented-out lines of code should be removed.(—”ºê
-V	java:S125"<This block of commented-out lines of code should be removed.(Ô¬®¯øÿÿÿÿ
-V	java:S125 "<This block of commented-out lines of code should be removed.(©Ãš üÿÿÿÿ
-Q	java:S125#"<This block of commented-out lines of code should be removed.(©ñ˜¨
-V	java:S125&"<This block of commented-out lines of code should be removed.(·ÂÜÔüÿÿÿÿ
-V	java:S125/"<This block of commented-out lines of code should be removed.(¯¼¢íÿÿÿÿÿ
-V	java:S1254"<This block of commented-out lines of code should be removed.(Ã³¸õøÿÿÿÿ
-Q	java:S1257"<This block of commented-out lines of code should be removed.(Õ­öà
-Q	java:S125<"<This block of commented-out lines of code should be removed.(ôœ’¥
-N
-java:S1128"8Remove this unused import 'freePractise.__IO.IOStreams'.(ßó§‹
-`
-java:S1128"ERemove this unused import 'freePractise.deleteMeLater.DeleteMeLater'.(ˆ‹Ûñøÿÿÿÿ

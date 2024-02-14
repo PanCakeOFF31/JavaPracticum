@@ -6,6 +6,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/src/yandexPracticum/folderTemplate" />
       <excludeFolder url="file://$MODULE_DIR$/src/yandexPracticum/sectionTemplate" />
+      <excludeFolder url="file://$MODULE_DIR$/src/headFirst/chapter_12_composite" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

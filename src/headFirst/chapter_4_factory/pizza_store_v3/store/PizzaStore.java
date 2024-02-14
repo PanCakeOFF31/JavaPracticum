@@ -7,8 +7,9 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 public abstract class PizzaStore {
-    protected SimplePizzaFactory simplePizzaFactory;
+//    Это нужно для абстрактной фабрики продуктов - ингридиенты пиццы
     protected PizzaIngredientFactory ingredientFactory;
+    protected SimplePizzaFactory simplePizzaFactory;
 
     public Pizza orderPizza(String type) {
         Pizza pizza;
@@ -23,6 +24,7 @@ public abstract class PizzaStore {
         return pizza;
     }
 
+//    Фабричный метод - реализуется наследниками
     protected abstract Pizza createPizza(String type);
 
 }

@@ -70,7 +70,7 @@ public class JavaSyntaxPro {
 //        level_16();
 
 //        Работа со временем и датой
-        level_17();
+//        level_17();
 
 //        Знакомство с ООП
 //        level_18();

@@ -4,15 +4,7 @@
     Параллельно выполняем курс Java Rush
 */
 
-import freePractise.FreePractise;
-import gerbertShieldBook.GerbertShieldBook;
 import javaRush.JavaRush;
-import lombok.Getter;
-import tasks.Tasks;
-import yandexPracticum.YandexPracticum;
-
-import java.util.Arrays;
-import java.util.Comparator;
 
 public class Main {
 
@@ -25,7 +17,7 @@ public class Main {
 //        YandexPracticum.yandexPracticum();
 //
 //         Свободно творческая часть
-        FreePractise.freePractise();
+//        FreePractise.freePractise();
 
 //        www.JavaRush.Com
 //        JavaRush.javaRush();

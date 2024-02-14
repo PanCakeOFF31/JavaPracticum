@@ -2,12 +2,13 @@ package javaRush.javaSyntaxPro.level_19;
 
 import helpers.coloredString.Colors;
 import helpers.coloredString.Logger;
-import yandexPracticum.javaCoreIntroduction.theme_15_OOP.lesson_6.A.A;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.ToString;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.*;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -61,10 +62,12 @@ public class Level_19 {
 //        program_4();
 
 //        Stream: allMatch(), anyMatch(), filter()
-//        program_5();
+        program_5();
 
 //        Stream: Stream.of(), Stream.concat(), Stream.generate()
-        program_6();
+//        program_6();
+
+
 //        program_7();
 //        program_8();
 //        program_9();
@@ -78,19 +81,20 @@ public class Level_19 {
 
         String[] strs = new String[]{
                 "abcdefg",
+                "abc",
                 "abcdef",
-                "abcdef",
-                "abdfed",
                 "abcde",
                 "abcd",
-                "abc",
                 "ab",
+                "abcdef",
                 "ab",
-                "a"
+                "a",
+                "abdfed"
         };
 
-        LengthSorting comparator1 = new LengthSorting();
-
+//        Вложенный класс, который реализует компаратор
+        Comparator<String> comparator1 = new LengthSorting();
+//        Компаратор, через анонимный класс
         Comparator<String> comparator2 = new Comparator<String>() {
             @Override
             public int compare(String o1, String o2) {
@@ -98,9 +102,14 @@ public class Level_19 {
             }
         };
 
+        Logger.printMessage("Исходный массив");
+        System.out.println(Arrays.toString(strs));
+
+        Logger.printMessage("Сортировка по количеству букв по возрастанию");
         Arrays.sort(strs, comparator1);
         System.out.println(Arrays.toString(strs));
 
+        Logger.printMessage("Сортировка по количеству букв по убыванию");
         Arrays.sort(strs, comparator2);
         System.out.println(Arrays.toString(strs));
 
@@ -142,7 +151,7 @@ public class Level_19 {
         printSectionEnding();
     }
 
-    static class LengthSorting implements Comparator<String> {
+    private static class LengthSorting implements Comparator<String> {
         @Override
         public int compare(String o1, String o2) {
             return o1.length() - o2.length();
@@ -155,11 +164,12 @@ public class Level_19 {
         ArrayList<String> list = new ArrayList<>(Arrays.asList(strings));
 
         Stream<String> stream1 = list.stream();
-        System.out.println("stream1 = " + stream1);
+        System.out.println("stream1:");
+        stream1.forEach(System.out::println);
 
         var set1 = list.stream()
                 .filter(n -> n.length() <= 6)
-                .filter(n -> Pattern.matches("[Aa].*", n))
+                .filter(n -> Pattern.matches("^[Aa].*", n))
                 .collect(Collectors.toSet());
 
         System.out.println("set1 = " + set1);
@@ -229,19 +239,18 @@ public class Level_19 {
     private static void program_5() {
         printSection("Program_5. Stream: allMatch(), anyMatch(), filter()");
 
-        var list = new ArrayList<>(List.of(10,20,30));
-
         Logger.printMessage("Утверждение №1: все элементы списка больше нуля");
         System.out.println(intList);
         System.out.println(intList
                 .stream().
                 allMatch(n -> n > 0));
 
-        Logger.printMessage("Утверждение №1: все элементы списка больше нуля");
+        var list = new ArrayList<>(List.of(10, 20, 30));
+        Logger.printMessage("Утверждение №2: все элементы списка больше нуля");
         System.out.println(list);
         System.out.println(list.stream().allMatch(n -> n > 0));
 
-        Logger.printMessage("Утверждение №2: хотя бы одно слово с длинной от 7 символов");
+        Logger.printMessage("Утверждение №3: хотя бы одно слово с длинной от 7 символов");
         System.out.println(stringList);
         System.out.println(stringList.stream().anyMatch(n -> n.length() > 6));
         System.out.println("Список этих слов:");
@@ -250,15 +259,72 @@ public class Level_19 {
                 .filter(n -> n.length() > 6)
                 .toList());
 
+        Logger.printMessage("Утверждение №4: нет ни одного слова, длина которого больше 12");
+        System.out.println(stringList);
+        System.out.println(stringList.stream().noneMatch(n -> n.length() > 12));
+
         printSectionEnding();
     }
 
     private static void program_6() {
         printSection("Program_6. Stream: Stream.of(), Stream.concat(), Stream.generate()");
 
-        Stream<Integer> stream1 = Stream.of(10,20,30);
+        Stream<Integer> stream1 = Stream.of(10, 20, 30);
 
         printSectionEnding();
+    }
+
+    private static void program_7() {
+        printSection("Program_7. Разница между Map и FlatMap при ::stream");
+
+        Container container1 = new Container(new ArrayList<>(List.of(10, 20, 30)));
+        Container container2 = new Container(new ArrayList<>(List.of(40, 45, 50)));
+        Container container3 = new Container(new ArrayList<>(List.of(11, 22, 33)));
+
+        List<Container> containers = List.of(container1, container2, container3);
+
+        {
+            var list = containers.stream()
+                    .map(Container::getInts).toList();
+
+            System.out.println(list.size());
+            System.out.println(list);
+        }
+
+        {
+            var list = containers.stream()
+                    .map(Container::getInts)
+                    .flatMap(Collection::stream)
+                    .toList();
+
+            System.out.println(list.size());
+            System.out.println(list);
+        }
+
+        List<String> list = new ArrayList<String>();
+
+        list.add("https://google.com");
+        list.add("https://linkedin.com");
+        list.add("https://yandex.com");
+
+        Stream<URI> stream = list.stream().map(str -> {
+            try {
+                return new URI(str);
+            } catch (URISyntaxException e) {
+                throw new RuntimeException(e);
+            }
+        });
+
+        stream.forEach(System.out::println);
+
+        printSectionEnding();
+    }
+
+    @AllArgsConstructor
+    @Getter
+    @ToString
+    private static class Container {
+        private ArrayList<Integer> ints;
     }
 }
 

@@ -1,15 +1,10 @@
 
 0
 java:S1220""Move this file to a named package.
-V	java:S125"<This block of commented-out lines of code should be removed.(˘√üﬁ¸ˇˇˇˇ
-Q	java:S125"<This block of commented-out lines of code should be removed.(µöß¸
-P	java:S125 "<This block of commented-out lines of code should be removed.(É˘Ÿ\
+W	java:S125"<This block of commented-out lines of code should be removed.(ßÛ¡
+8 ¨‘˘ÿ1
+V	java:S125"<This block of commented-out lines of code should be removed.(˘√üﬁ¸ˇˇˇˇ
+Q	java:S125"<This block of commented-out lines of code should be removed.(µöß¸
+P	java:S125"<This block of commented-out lines of code should be removed.(É˘Ÿ\
 D
-java:S1128	".Remove this unused import 'javaRush.JavaRush'.(æ∑˙ø
->
-java:S1128
-"(Remove this unused import 'tasks.Tasks'.(Å ñ®
-R
-java:S1128"<Remove this unused import 'yandexPracticum.YandexPracticum'.(ö∏Óƒ
-H
-java:S1128"-Remove this unused import 'java.util.Arrays'.(Óñò…¸ˇˇˇˇ
+java:S1128".Remove this unused import 'javaRush.JavaRush'.(æ∑˙ø

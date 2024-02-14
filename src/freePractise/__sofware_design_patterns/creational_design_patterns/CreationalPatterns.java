@@ -1,9 +1,6 @@
 package freePractise.__sofware_design_patterns.creational_design_patterns;
 
-import freePractise.__sofware_design_patterns.creational_design_patterns.abstract_factory_method.AbstractFactory;
-import freePractise.__sofware_design_patterns.creational_design_patterns.builder_method.Builder;
-import freePractise.__sofware_design_patterns.creational_design_patterns.factory_method.Factory;
-import freePractise.__sofware_design_patterns.creational_design_patterns.singleton_method.Singleton;
+import freePractise.__sofware_design_patterns.creational_design_patterns.builder_method.BuilderPattern;
 
 import static helpers.Helpers.printSection;
 import static helpers.Helpers.printSectionEnding;
@@ -25,7 +22,7 @@ public class CreationalPatterns {
 //        "Прототип"
 //        Prototype.prototypeMethod();
 //        "Строитель"
-        Builder.builderMethod();
+        BuilderPattern.builderMethod();
 
         printSectionEnding();
 

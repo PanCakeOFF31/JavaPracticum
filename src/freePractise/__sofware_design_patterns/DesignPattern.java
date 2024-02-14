@@ -7,6 +7,9 @@ import freePractise.__sofware_design_patterns.structaral_design_patterns.Structu
 import static helpers.Helpers.*;
 
 public class DesignPattern {
+    public static void main(String[] args) {
+        patternClass();
+    }
     public static void patternClass() {
         printArticle("Software Design Patterns - паттерны проектирования ПО");
 
