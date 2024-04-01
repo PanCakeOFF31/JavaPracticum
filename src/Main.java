@@ -20,7 +20,7 @@ public class Main {
 //        FreePractise.freePractise();
 
 //        www.JavaRush.Com
-//        JavaRush.javaRush();
+        JavaRush.javaRush();
 
 //        Задачи из интернета
 //        Tasks.tasks();

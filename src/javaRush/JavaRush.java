@@ -8,5 +8,6 @@ public class JavaRush {
 //        Java Syntax Pro 20 levels
         javaSyntaxPro();
 
+
     }
 }

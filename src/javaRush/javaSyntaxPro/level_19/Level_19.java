@@ -62,7 +62,7 @@ public class Level_19 {
 //        program_4();
 
 //        Stream: allMatch(), anyMatch(), filter()
-        program_5();
+//        program_5();
 
 //        Stream: Stream.of(), Stream.concat(), Stream.generate()
 //        program_6();
