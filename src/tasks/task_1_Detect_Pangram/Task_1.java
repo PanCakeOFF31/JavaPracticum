@@ -2,7 +2,8 @@ package tasks.task_1_Detect_Pangram;
 
 import java.util.ArrayList;
 
-import static helpers.Helpers.*;
+import static helpers.Helpers.printSection;
+import static helpers.Helpers.printSectionEnding;
 
 public class Task_1 {
     public static void task_1() {
@@ -37,16 +38,12 @@ public class Task_1 {
     }
 
     public boolean check_1(String sentence) {
-        boolean result = false;
-
-        for (char character = 'a' ; character <= 'z'; ++character) {
-            if (!sentence.toLowerCase().contains(String.valueOf(character))){
-                return result;
+        for (char character = 'a'; character <= 'z'; ++character) {
+            if (!sentence.toLowerCase().contains(String.valueOf(character))) {
+                return false;
             }
         }
 
-        result = true;
-
-        return result;
+        return true;
     }
 }

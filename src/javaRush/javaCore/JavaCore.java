@@ -7,6 +7,8 @@ public class JavaCore {
     public static void javaCore() {
         printArticle("Part 2. Java Syntax Core");
 
+
+
         printArticleEnding();
     }
 }

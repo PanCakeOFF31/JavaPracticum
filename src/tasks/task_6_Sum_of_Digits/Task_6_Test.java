@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class Task_6Test {
+public class Task_6_Test {
     Task_6 task = new Task_6();
 
     @Test

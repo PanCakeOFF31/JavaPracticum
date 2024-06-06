@@ -7,6 +7,7 @@ public class Level_1 {
     public static void level_1() {
         printSection("Level 1. Основы ООП: основные принципы");
 
+
         printSectionEnding();
     }
 }
