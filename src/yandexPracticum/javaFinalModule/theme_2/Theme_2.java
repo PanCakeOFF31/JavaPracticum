@@ -1,12 +1,11 @@
-package yandexPracticum.javaFinalModule.theme1;
+package yandexPracticum.javaFinalModule.theme_2;
 
-import static helpers.Helpers.*;
+import static helpers.Helpers.printSection;
+import static helpers.Helpers.printSectionEnding;
 
-public class Theme_1 {
+public class Theme_2 {
     public static void main(String[] args) {
-        printArticle("Алгоритмы и рекурсия");
-
-                program_1();
+        //        program_1();
         //        program_2();
         //        program_3();
         //        program_4();
@@ -18,8 +17,7 @@ public class Theme_1 {
     }
 
     private static void program_1() {
-        printSection("Program_1. Что такое рекурсия");
-
+        printSection("Program_1. ");
 
 
         printSectionEnding();
