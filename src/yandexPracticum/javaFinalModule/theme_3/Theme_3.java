@@ -3,10 +3,12 @@ package yandexPracticum.javaFinalModule.theme_3;
 import helpers.coloredString.Colors;
 import helpers.coloredString.Logger;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
-import java.util.concurrent.ConcurrentSkipListSet;
+import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import static helpers.Helpers.*;
@@ -53,8 +55,9 @@ public class Theme_3 {
 //        program_14();
         // За тебя и за того парня
 //        program_15();
-        program_16();
-        //        program_17();
+//        program_16();
+        // Queue
+        program_17();
         //        program_18();
         //        program_19();
     }
@@ -584,9 +587,93 @@ public class Theme_3 {
         printSectionEnding();
     }
 
-    private static void program_16() {
-        printSection("Program_16. Пулы");
+    private static void program_16() throws InterruptedException {
+        printSection("Program_16. Пулы, ExecutorService");
+        Object monitor = new Object();
 
+        try {
+            FileWriter writer = new FileWriter(".\\program_16.txt");
+            writer.write("");
+
+            List<Runnable> tasks = new ArrayList<>();
+
+            for (int i = 0; i < 100; i++) {
+                final int copyOfI = i;
+                Runnable task = () -> {
+                    synchronized (monitor) {
+                        try {
+                            System.out.println("Задача №" + copyOfI);
+                            writer.append("Задача №").append(String.valueOf(copyOfI)).append("\n");
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }
+                };
+
+                tasks.add(task);
+            }
+
+            ExecutorService executor = Executors.newFixedThreadPool(10);
+
+            for (Runnable task : tasks) {
+                executor.execute(task);
+            }
+
+            Thread.sleep(1000);
+            executor.shutdown();
+            while (!executor.awaitTermination(3, TimeUnit.SECONDS)) {
+
+            }
+        } catch (IOException e) {
+            throw new RuntimeException();
+        }
+
+        printSectionEnding();
+    }
+
+    private static void program_17() throws InterruptedException {
+        printSection("Program_17. Queue");
+        final int queueSize = 10;
+        final int number = 20;
+        final int poisonPill = -1;
+
+        BlockingQueue<Integer> queue = new ArrayBlockingQueue<>(queueSize);
+
+        Thread threadA = new Thread(() -> {
+            try {
+                for (int i = 1; i <= number; i++) {
+                    queue.put(i);
+                    System.out.println("A: добавил " + i + " в очередь");
+                }
+                queue.put(poisonPill);
+                System.out.println("A: добавил " + poisonPill);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+        });
+
+        Thread threadB = new Thread(() -> {
+            try {
+                while (true) {
+                    int i = queue.take();
+                    System.out.println("B: получил " + i);
+                    if (i == poisonPill) {
+                        System.out.println("B: конец");
+                        break;
+                    }
+                }
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+        });
+
+        threadB.start();
+        threadA.start();
+        
+        threadA.join();
+        threadB.join();
+        
+        Logger.printMessage("main() - конец");
 
         printSectionEnding();
     }
